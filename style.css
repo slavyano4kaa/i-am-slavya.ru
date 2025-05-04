@@ -92,7 +92,7 @@ body {
     align-items: center;
     gap: 10px;
     padding: 10px 20px;
-    background-color: transparent;
+    background-color: gray;
     color: white;
     text-decoration: none;
     font-weight: bold;
