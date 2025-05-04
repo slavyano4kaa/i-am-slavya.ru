@@ -88,18 +88,28 @@ body {
 }
 
 .link-button {
-    background-color: #808080;  /* Серый фон */
-    color: white;
-    padding: 10px 20px;
-    border-radius: 12px;
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: #808080; /* Серый цвет фона */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 12px;
+    transition: transform 0.2s;
+    height: 50px; /* Установите фиксированную высоту для кнопки */
+    min-width: 150px; /* Установите минимальную ширину для кнопки */
+}
+
+.link-button:hover {
+    transform: scale(1.05);
 }
 
 .link-button img {
     width: 24px;
     height: 24px;
-    margin-right: 10px;
+    object-fit: contain;
 }
 
 .square-button {
