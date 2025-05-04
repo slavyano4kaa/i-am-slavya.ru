@@ -92,36 +92,38 @@ body {
     align-items: center;
     gap: 10px;
     padding: 10px 20px;
-    background-color: gray;
-    color: black;
+    background-color: transparent;
+    color: white;
     text-decoration: none;
     font-weight: bold;
     border-radius: 12px;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: transform 0.2s;
 }
 
 .link-button:hover {
-    background-color: #888;
     transform: scale(1.05);
 }
 
 .link-button img {
     width: 24px;
     height: 24px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .square-button {
-    padding: 10px;
+    padding: 0;
     width: 48px;
     height: 48px;
     justify-content: center;
-    border-radius: 12px;
+    align-items: center;
+    border-radius: 8px;
+    background-color: transparent;
 }
 
 .square-button img {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
 }
 
 @media (max-width: 768px) {
