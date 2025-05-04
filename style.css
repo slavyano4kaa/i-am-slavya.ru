@@ -22,6 +22,7 @@ body {
     width: 480px;
     height: 270px;
     position: relative;
+    z-index: 1;
     overflow: hidden;
 }
 
@@ -34,7 +35,6 @@ body {
     z-index: 1;
 }
 
-/* Низкий градиент для плавного перехода */
 .gif-box::after {
     content: "";
     position: absolute;
@@ -43,8 +43,8 @@ body {
     right: 0;
     height: 100px;
     background: linear-gradient(to bottom, transparent, black);
-    pointer-events: none;
     z-index: 2;
+    pointer-events: none;
 }
 
 .about h2,
@@ -108,9 +108,9 @@ body {
 .link-button img {
     width: 24px;
     height: 24px;
-    border-radius: 6px;
-    background-color: black;
     object-fit: cover;
+    border-radius: 6px;
+    background-color: transparent;
 }
 
 .square-button {
