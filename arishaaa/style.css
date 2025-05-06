@@ -1,0 +1,284 @@
+/* Общие стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Rubik Mono One', sans-serif;
+  overflow-x: hidden;
+  background: #fff;
+}
+
+section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Градиенты */
+.pink-section {
+  background: linear-gradient(to bottom, #ffcce5, #ff6699);
+  position: relative;
+  z-index: 3;
+}
+
+.gray-section {
+  background: linear-gradient(to bottom, #555555, #cccccc);
+  position: relative;
+  z-index: 2;
+}
+
+.green-section {
+  background: linear-gradient(to bottom, #004d00, #99cc66);
+  position: relative;
+  z-index: 1;
+  padding-bottom: 80px;
+}
+
+/* Скобы поверх */
+.skobi-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.skobi-wrapper .skobi {
+  width: 50vw;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.skobi-green-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.skobi-green-wrapper .skobi {
+  width: 50vw;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.green-section .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  padding: 20px 0;
+  z-index: 5;
+}
+
+/* Текст */
+.name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -130px);
+  font-size: 3rem;
+  color: #c0286b;
+  font-weight: bold;
+  text-align: center;
+}
+
+.age {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -80px);
+  font-size: 2.5rem;
+  color: white;
+  text-align: center;
+  font-size: 28px;  
+}
+
+.bday-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -20px);
+  font-size: 2.7rem;
+  color: #cc0066;
+  font-weight: bold;
+  text-align: center;
+}
+
+.bday-date {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 30px);
+  font-size: 2.2rem;
+  color: white;
+  text-align: center;
+  font-size: 28px;
+}
+
+/* Изображения */
+.img {
+  position: absolute;
+}
+
+.asset1 { top: 40px; right: 200px; width: 340px; }
+.bant { top: 20px; right: 50px; width: 130px; }
+.asset2 { top: 200px; left: 50px; width: 540px; }
+.asset3 { top: 200px; right: 50px; width: 240px; }
+.asset4 { top: 600px; left: 50%; transform: translateX(-50%); width: 300px; }
+
+.asset5 { top: 150px; left: 60px; width: 366px; }
+.asset6 { top: 320px; right: 150px; width: 277px; z-index: 2; }
+.asset7 { top: 150px; right: 50px; width: 277px; z-index: 1; }
+
+.asset9 { top: 100px; left: 80px; width: 600px; }
+.asset10 { top: 100px; right: 80px; width: 600px; }
+.asset8 { bottom: 30px; left: 50%; transform: translateX(-50%); width: 600px; }
+
+/* Кнопки */
+.links {
+  text-align: center;
+  padding-top: 120px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.links h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 20px 40px;
+  border: 2px solid white;
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+  font-size: 1.5rem;
+  border-radius: 16px;
+  background-color: transparent;
+  min-width: 340px;
+  text-align: center;
+}
+
+.btn:hover {
+  background: white;
+  color: black;
+}
+
+.btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn.half {
+  min-width: 160px;
+}
+
+.btn.long {
+  min-width: 340px;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .img {
+    width: 180px !important;
+  }
+
+  /* Позиционирование изображений */
+  .bant {
+    top: 20px;
+    right: 20px; /* перемещаем почти в самый правый верхний угол */
+    width: 10px;
+  }
+  .asset4 {
+    top: 560px; /* поднимем выше */
+  }
+  .asset2 {
+    top: 415px; /* перемещаем ниже */
+    left: 1px; /* перемещаем к краю экрана */
+  }
+  .asset3 {
+    top: 400px; /* чуть ниже чем asset2 */
+    right: 1px; /* правее к краю экрана */
+  }
+  
+  .links {
+    margin-top: -50px;
+  }
+  
+  .links .btn-row {
+    flex-direction: row; /* кнопки в ряд */
+  }
+
+  .asset6 {
+    top: 540px; /* ниже */
+  }
+  .asset5 {
+    top: 370px; /* ниже */
+    left: 1px; /* левее */
+  }
+  .asset7 {
+    top: 430px; /* ниже чем asset5 */
+    right: 20px; /* правее */
+  }
+
+  /* Изменение размеров для asset9 и asset10 */
+  .asset9 {
+    width: 250px; /* увеличиваем в 1.3 раза */
+    height: auto;
+    right: 10px;
+  }
+  .asset10 {
+    width: 250px; /* увеличиваем в 1.3 раза */
+    height: auto;
+    top: 320px; /* чуть ниже, чем asset9 */
+  }
+  .asset8 {
+    width: 250px; /* увеличиваем в 1.3 раза */
+    height: auto;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .btn.long, .btn.half {
+    width: 90% !important;
+    min-width: auto;
+  }
+
+  .btn-row {
+    flex-direction: column;
+  }
+}
+
+
+/* Импорт шрифта */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Rubik+Mono+One&display=swap');
