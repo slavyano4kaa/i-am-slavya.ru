@@ -27,13 +27,13 @@
       <div class="channels">
         <div class="channel">
           <span class="channel-title">полезный контент<br>с 13 этажа</span>
-          <a href="https://t.me/+9G70vTv-Rl9iYmEy" class="btn channel-btn long">
+          <a href="https://t.me/+9G70vTv-Rl9iYmEy" class="btn channel-btn long sparkle-btn">
             <img src="telegram_black_logo.png" class="icon" />Telegram
           </a>
         </div>
         <div class="channel">
           <span class="channel-title">JustSkiddersFromRu<br>&nbsp;</span> <!-- добавлен пробел и перенос -->
-          <a href="https://t.me/justdevsfromru" class="btn channel-btn long">
+          <a href="https://t.me/justdevsfromru" class="btn channel-btn long sparkle-btn">
             <img src="telegram_black_logo.png" class="icon" />Telegram
           </a>
         </div>
@@ -51,23 +51,23 @@
     </div>
     <div class="links">
   <h2>My Links</h2>
-  <a href="https://github.com/slavyano4kaa" class="btn long">
+  <a href="https://github.com/slavyano4kaa" class="btn long sparkle-btn">
     <img src="github_black_logo.png" class="icon" />GitHub
   </a>
-  <a href="https://t.me/slavyano4kaa" class="btn long">
+  <a href="https://t.me/slavyano4kaa" class="btn long sparkle-btn">
     <img src="telegram_black_logo.png" class="icon" />Telegram
   </a>
-  <a href="https://vk.com/slavya69" class="btn long">
+  <a href="https://vk.com/slavya69" class="btn long sparkle-btn">
     <img src="vk_black_logo.png" class="icon" />VK
   </a>
-  <a href="{tiktok}" class="btn long">
+  <a href="{tiktok}" class="btn long sparkle-btn">
     <img src="tiktok_black_logo.png" class="icon" />TikTok
   </a>
   <div class="row">
-    <a href="https://steamcommunity.com/id/slavyano4kaa" class="btn">
+    <a href="https://steamcommunity.com/id/slavyano4kaa" class="btn sparkle-btn">
       <img src="steam_black_logo.png" class="icon" />Steam
     </a>
-    <a href="https://steamcommunity.com/id/nameslavya" class="btn">
+    <a href="https://steamcommunity.com/id/nameslavya" class="btn sparkle-btn">
       <img src="steam_black_logo.png" class="icon" />Steam
     </a>
   </div>
@@ -79,5 +79,34 @@
   <footer>
     Made with love by slavyano4kaa &lt;3
   </footer>
+    <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.sparkle-btn').forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+        const sparkleInterval = setInterval(() => {
+          const star = document.createElement('span');
+          star.classList.add('sparkle');
+          star.style.left = `${Math.random() * 100}%`;  // Размещение звезды в случайной позиции по горизонтали
+          star.style.bottom = `${Math.random() * 10}px`;  // Задаем небольшое смещение по вертикали для старта
+          star.style.animationDelay = `${Math.random() * 0.3}s`; // Задержка для разных анимаций
+          star.style.background = ['#fff', '#ddd', '#0cf', '#0ff'][Math.floor(Math.random() * 4)];
+          star.style.width = `${Math.random() * 4 + 2}px`;
+          star.style.height = star.style.width; // Высота и ширина одинаковые для звездочки
+
+          // Запускаем анимацию сразу
+          star.style.animation = 'sparkleUp 0.8s forwards ease-out'; 
+
+          btn.appendChild(star);
+          setTimeout(() => star.remove(), 1000);  // Убираем звезды через 1 секунду
+        }, 50);  // Появление новой звезды каждые 50 мс (чаще)
+
+        // Прекращаем появление звездочек при уходе с кнопки
+        btn.addEventListener('mouseleave', () => {
+          clearInterval(sparkleInterval);
+        });
+      });
+    });
+  });
+</script>
 </body>
 </html>
