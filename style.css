@@ -1,150 +1,236 @@
 body {
-    margin: 0;
-    background-color: black;
-    color: white;
-    font-family: sans-serif;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: black;
+  color: white;
 }
 
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px;
-    justify-content: center;
-    gap: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px solid #00bfff;
+  gap: 20px;
 }
 
-.gif-wrapper {
-    position: relative;
-    display: inline-block;
+.profile, .links {
+  border: 2px solid #00bfff;
+  padding: 20px;
+  border-radius: 12px;
+  flex: 1;
+  min-width: 280px;
 }
 
-.gif-box {
-    width: 480px;
-    height: 270px;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
+.avatar-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 2px solid #00bfff;
+  padding-bottom: 10px;
 }
 
-.gif-box img.main-gif {
-    width: 100%;
-    height: auto; /* Обеспечивает сохранение пропорций */
-    object-fit: cover;
-    display: block;
-    position: relative;
-    z-index: 1;
+.avatar {
+  width: 100px;
+  height: 100px;
+  border: 3px solid #00bfff;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.gif-box::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    background: linear-gradient(to bottom, transparent, black);
-    z-index: 2;
-    pointer-events: none;
+.username-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 15px;
 }
 
-.about h2,
+.username {
+  font-size: 26px;
+  font-weight: bold;
+  color: #00bfff;
+  line-height: 1.2;
+}
+
+.status {
+  font-size: 20px;
+  color: #aaa;
+  margin-top: 2px;
+}
+
+.channels {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.channel {
+  flex: 1;
+  border: 2px solid #00bfff;
+  padding: 10px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 160px;
+  max-width: 240px;
+}
+
+.channel-title {
+  font-weight: bold;
+  color: #00bfff;
+  text-align: left;
+  display: block;
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.channel-btn {
+  margin-top: 10px;
+  width: 150px;
+  align-self: start;
+  background-color: #00bfff;
+  color: black;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.channel-btn:hover {
+  transform: scale(1.05);
+}
+
 .links h2 {
-    font-size: 2em;
-}
-
-.about {
-    max-width: 600px;
-    flex: 1;
-}
-
-.info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px 40px;
-}
-
-.info-cell i {
-    font-style: italic;
-    color: gray;
-}
-
-.info-cell span {
-    display: block;
-    font-style: normal;
-    color: white;
-    font-weight: bold;
+  margin-top: 0;
 }
 
 .links {
-    width: 100%;
-    max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Одинаковое расстояние между всеми кнопками */
+  flex-wrap: wrap;
 }
 
-.link-row {
-    display: flex;
-    gap: 10px;
-    margin: 10px 0;
-    flex-wrap: wrap;
+.links .btn {
+  background-color: #00bfff;
+  color: black;
+  text-decoration: none;
+  padding: 10px 1px;
+  border-radius: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  margin: 0 auto;
+  border: none;
+  width: 100%;
+  max-width: 220px; /* Стандартная максимальная ширина для кнопок */
 }
 
-.link-button {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
-    background-color: gray;
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 12px;
-    transition: background-color 0.3s, transform 0.2s;
+.links .btn.long {
+  max-width: 420px; /* Для длинных кнопок */
 }
 
-.link-button:hover {
-    background-color: #888;
-    transform: scale(1.05);
+.links .btn.medium {
+  max-width: 300px; /* Для кнопок средней длины */
 }
 
-.link-button img {
-    width: 24px;
-    height: 24px;
-    object-fit: cover;
+.links .btn:not(.long) {
+  width: fit-content; /* Кнопки, не являющиеся длинными, занимают ширину по содержимому */
 }
 
-.square-button {
-    padding: 10px;
-    width: 48px;
-    height: 48px;
-    justify-content: center;
-    border-radius: 12px;
+
+.links .btn:hover {
+  transform: scale(1.05);
 }
 
-.square-button img {
-    width: 24px;
-    height: 24px;
+.links .row {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+  margin-top: -1px;
+}
+
+.links .row .btn {
+  flex: none;
+  width: 190px;
+  margin: 0 auto;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.info {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 20px;
+}
+
+.info strong {
+  color: white;
+}
+
+.info span {
+  color: #00bfff;
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  color: gray;
+  font-size: 14px;
 }
 
 @media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
+  .container {
+    flex-direction: column;
+    align-items: stretch; /* растягивает дочерние блоки на всю ширину */
+  }
 
-    .gif-box {
-        width: 100%;
-        max-width: 100vw;
-        height: auto; /* Высота будет пропорциональна ширине */
-    }
+  .profile,
+  .links {
+    order: unset;
+    margin: 0 -10px; /* равные отступы слева и справа */
+    width: auto;    /* позволяем блоку занять доступное пространство */
+  }
+  
+   /* Каналы */
+  .channels {
+    display: flex;
+    flex-direction: column; /* Выводим каналы в столбик */
+    gap: 10px; /* расстояние между каналами */
+    width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 
-    .about, .links {
-        max-width: 90%;
-    }
+  .channel {
+    flex-grow: 1; /* Позволяет каналам растягиваться */
+    width: 100%; /* каналы будут растягиваться на всю ширину */
+    margin: 0 10px; /* добавляем отступы для симметричности */
+  }
+
+  .channel-title {
+    text-align: left; /* центрируем заголовок */
+  }
+  
+  .channel-btn {
+      width: 88%;
+  }
 }
 
-.footer {
-    text-align: center;
-    color: gray;
-    font-size: 0.9em;
-    margin-top: 60px;
-    padding-bottom: 20px;
-}
