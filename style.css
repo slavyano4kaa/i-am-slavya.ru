@@ -234,3 +234,32 @@ footer {
   }
 }
 
+.sparkle-btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.sparkle-btn:hover {
+  transform: scale(1.05);
+}
+
+.sparkle-btn .sparkle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.9;
+  pointer-events: none;
+  animation: sparkleUp 0.6s forwards ease-out; /* Сделаем анимацию быстрее */
+}
+
+@keyframes sparkleUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px) scale(0.3);
+    opacity: 0;
+  }
+}
+
