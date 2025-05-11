@@ -223,6 +223,16 @@ toggleBtn.addEventListener('click', () => {
   }
 });
 
+    fetch('subs.php')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('content-subs').textContent = `${data.content} подписчиков`;
+      document.getElementById('skidders-subs').textContent = `${data.skidders} подписчиков`;
+    })
+    .catch(() => {
+      document.getElementById('content-subs').textContent = 'нет данных';
+      document.getElementById('skidders-subs').textContent = 'нет данных';
+    });
 </script>
 </body>
 </html>
