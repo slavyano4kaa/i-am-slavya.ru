@@ -305,16 +305,17 @@ footer {
   box-shadow: 0 0 10px #00ccff;
 }
 
-.section-divider {
-  border: none;
-  height: 1px;
-  background-color: #ccc;
-  margin: 10px 0 5px;
-}
-
 .subscriber-count {
   font-size: 14px;
   color: gray;
   text-align: right;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
+
+.section-divider {
+  border: none;
+  height: 1px;
+  background-color: #00ccff; /* синяя линия */
+  margin: 5px 0 10px;
+}
+
