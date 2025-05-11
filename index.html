@@ -46,15 +46,26 @@
 
       <div class="channels">
         <div class="channel">
-          <span class="channel-title">полезный контент<br>с 13 этажа</span>
-          <a href="https://t.me/+9G70vTv-Rl9iYmEy" class="btn channel-btn long sparkle-btn">
-            <img src="telegram_black_logo.png" class="icon" />Telegram
-          </a>
-        </div>
-        <div class="channel">
-          <span class="channel-title">JustSkiddersFromRu<br>&nbsp;</span> <!-- добавлен пробел и перенос -->
-          <a href="https://t.me/justdevsfromru" class="btn channel-btn long sparkle-btn">
-            <img src="telegram_black_logo.png" class="icon" />Telegram
+              <span class="channel-title">полезный контент<br>с 13 этажа</span>
+            
+              <!-- Разделитель и количество подписчиков -->
+              <hr class="section-divider" />
+              <div class="subscriber-count" id="content-subs">Подписчиков: ...</div>
+            
+              <a href="https://t.me/+9G70vTv-Rl9iYmEy" class="btn channel-btn long sparkle-btn">
+                <img src="telegram_black_logo.png" class="icon" />Telegram
+              </a>
+            </div>
+            
+            <div class="channel">
+              <span class="channel-title">JustSkiddersFromRu<br>&nbsp;</span>
+            
+              <!-- Разделитель и количество подписчиков -->
+              <hr class="section-divider" />
+              <div class="subscriber-count" id="skidders-subs">Подписчиков: ...</div>
+            
+              <a href="https://t.me/justdevsfromru" class="btn channel-btn long sparkle-btn">
+                <img src="telegram_black_logo.png" class="icon" />Telegram
           </a>
         </div>
       </div>
@@ -230,12 +241,13 @@ toggleBtn.addEventListener('click', () => {
     fetch('subs.php')
     .then(res => res.json())
     .then(data => {
-      document.getElementById('content-subs').textContent = `${data.content} подписчиков`;
-      document.getElementById('skidders-subs').textContent = `${data.skidders} подписчиков`;
+      const format = num => num.toLocaleString('ru-RU');
+      document.getElementById('content-subs').textContent = `Подписчиков: ${format(data.content)}`;
+      document.getElementById('skidders-subs').textContent = `Подписчиков: ${format(data.skidders)}`;
     })
     .catch(() => {
-      document.getElementById('content-subs').textContent = 'нет данных';
-      document.getElementById('skidders-subs').textContent = 'нет данных';
+      document.getElementById('content-subs').textContent = 'Подписчиков: недоступно';
+      document.getElementById('skidders-subs').textContent = 'Подписчиков: недоступно';
     });
 </script>
 </body>
