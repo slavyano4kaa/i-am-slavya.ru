@@ -14,6 +14,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <canvas id="rain-canvas"></canvas>
+  <audio id="rain-sound" loop>
+  <source src="rain.mp3" type="audio/mp3">
+</audio>
+
+<button id="toggle-sound" class="sound-toggle red">
+  🔇 Звук на сайте
+</button>
+
+
   <div class="container">
     <div class="profile">
       <div class="avatar-box">
@@ -27,13 +37,13 @@
       <div class="channels">
         <div class="channel">
           <span class="channel-title">полезный контент<br>с 13 этажа</span>
-          <a href="https://t.me/+9G70vTv-Rl9iYmEy" class="btn channel-btn long sparkle-btn">
+          <a href="{ссылка_на_1}" class="btn channel-btn long sparkle-btn">
             <img src="telegram_black_logo.png" class="icon" />Telegram
           </a>
         </div>
         <div class="channel">
           <span class="channel-title">JustSkiddersFromRu<br>&nbsp;</span> <!-- добавлен пробел и перенос -->
-          <a href="https://t.me/justdevsfromru" class="btn channel-btn long sparkle-btn">
+          <a href="{ссылка_на_2}" class="btn channel-btn long sparkle-btn">
             <img src="telegram_black_logo.png" class="icon" />Telegram
           </a>
         </div>
@@ -51,23 +61,23 @@
     </div>
     <div class="links">
   <h2>My Links</h2>
-  <a href="https://github.com/slavyano4kaa" class="btn long sparkle-btn">
+  <a href="{github}" class="btn long sparkle-btn">
     <img src="github_black_logo.png" class="icon" />GitHub
   </a>
-  <a href="https://t.me/slavyano4kaa" class="btn long sparkle-btn">
+  <a href="{telegram}" class="btn long sparkle-btn">
     <img src="telegram_black_logo.png" class="icon" />Telegram
   </a>
-  <a href="https://vk.com/slavya69" class="btn long sparkle-btn">
+  <a href="{vk}" class="btn long sparkle-btn">
     <img src="vk_black_logo.png" class="icon" />VK
   </a>
   <a href="{tiktok}" class="btn long sparkle-btn">
     <img src="tiktok_black_logo.png" class="icon" />TikTok
   </a>
   <div class="row">
-    <a href="https://steamcommunity.com/id/slavyano4kaa" class="btn sparkle-btn">
+    <a href="{ссылка_на_другое_1}" class="btn sparkle-btn">
       <img src="steam_black_logo.png" class="icon" />Steam
     </a>
-    <a href="https://steamcommunity.com/id/nameslavya" class="btn sparkle-btn">
+    <a href="{ссылка_на_другое_2}" class="btn sparkle-btn">
       <img src="steam_black_logo.png" class="icon" />Steam
     </a>
   </div>
@@ -79,34 +89,134 @@
   <footer>
     Made with love by slavyano4kaa &lt;3
   </footer>
-    <script>
+  <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // === Sparkle Effect ===
     document.querySelectorAll('.sparkle-btn').forEach(btn => {
       btn.addEventListener('mouseenter', () => {
         const sparkleInterval = setInterval(() => {
           const star = document.createElement('span');
           star.classList.add('sparkle');
-          star.style.left = `${Math.random() * 100}%`;  // Размещение звезды в случайной позиции по горизонтали
-          star.style.bottom = `${Math.random() * 10}px`;  // Задаем небольшое смещение по вертикали для старта
-          star.style.animationDelay = `${Math.random() * 0.3}s`; // Задержка для разных анимаций
+          star.style.left = `${Math.random() * 100}%`;
+          star.style.bottom = `${Math.random() * 10}px`;
+          star.style.animationDelay = `${Math.random() * 0.3}s`;
           star.style.background = ['#fff', '#ddd', '#0cf', '#0ff'][Math.floor(Math.random() * 4)];
           star.style.width = `${Math.random() * 4 + 2}px`;
-          star.style.height = star.style.width; // Высота и ширина одинаковые для звездочки
-
-          // Запускаем анимацию сразу
-          star.style.animation = 'sparkleUp 0.8s forwards ease-out'; 
-
+          star.style.height = star.style.width;
+          star.style.animation = 'sparkleUp 0.8s forwards ease-out';
           btn.appendChild(star);
-          setTimeout(() => star.remove(), 1000);  // Убираем звезды через 1 секунду
-        }, 50);  // Появление новой звезды каждые 50 мс (чаще)
-
-        // Прекращаем появление звездочек при уходе с кнопки
-        btn.addEventListener('mouseleave', () => {
-          clearInterval(sparkleInterval);
-        });
+          setTimeout(() => star.remove(), 1000);
+        }, 50);
+        btn.addEventListener('mouseleave', () => clearInterval(sparkleInterval), { once: true });
       });
     });
+
+    // === Rain Effect ===
+    const canvas = document.createElement('canvas');
+    canvas.id = 'rain-canvas';
+
+    const OFFSET_X = 300; // Насколько правее должно сместиться
+    const canvasStyles = {
+      position: 'fixed',
+      top: '0',
+      left: `-${OFFSET_X}px`,
+      width: `calc(100% + ${OFFSET_X * 2}px)`,
+      height: '100%',
+      zIndex: 9999,
+      pointerEvents: 'none'
+    };
+    Object.assign(canvas.style, canvasStyles);
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+
+    let width = window.innerWidth + OFFSET_X * 2;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    const raindrops = [];
+    const dropCount = 500;
+    const angle = -20 * Math.PI / 180;
+
+    for (let i = 0; i < dropCount; i++) {
+      raindrops.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        length: Math.random() * 15 + 10,
+        speed: Math.random() * 8 + 10
+      });
+    }
+
+    function drawRain() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.strokeStyle = 'rgba(174,194,224,0.6)';
+      ctx.lineWidth = 1.2;
+
+      raindrops.forEach(drop => {
+        const dx = drop.length * Math.sin(angle);
+        const dy = drop.length * Math.cos(angle);
+
+        ctx.beginPath();
+        ctx.moveTo(drop.x, drop.y);
+        ctx.lineTo(drop.x + dx, drop.y + dy);
+        ctx.stroke();
+
+        drop.x += Math.sin(angle) * drop.speed;
+        drop.y += Math.cos(angle) * drop.speed;
+
+        if (drop.y > height) {
+          // "взрыв" снизу
+          ctx.beginPath();
+          ctx.arc(drop.x, height - 2, 3 + Math.random() * 2, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(200, 200, 255, 0.8)';
+          ctx.fill();
+
+          drop.x = Math.random() * width;
+          drop.y = -20;
+          drop.length = Math.random() * 15 + 10;
+          drop.speed = Math.random() * 8 + 10;
+        }
+      });
+
+      requestAnimationFrame(drawRain);
+    }
+
+    drawRain();
+
+    window.addEventListener('resize', () => {
+      width = window.innerWidth + OFFSET_X * 2;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    });
   });
+  // Звук дождя
+const rainSound = document.getElementById('rain-sound');
+const toggleBtn = document.getElementById('toggle-sound');
+
+// Устанавливаем громкость
+rainSound.volume = 0.5; // 50% громкости
+
+// Изначально выключен звук
+let soundOn = false;
+toggleBtn.classList.add('red');
+toggleBtn.textContent = '🔇 Звук на сайте';
+
+// Логика для кнопки включения/выключения звука
+toggleBtn.addEventListener('click', () => {
+  soundOn = !soundOn;
+  if (soundOn) {
+    rainSound.play();
+    toggleBtn.textContent = '🔊 Звук на сайте';
+    toggleBtn.classList.remove('red');
+  } else {
+    rainSound.pause();
+    toggleBtn.textContent = '🔇 Звук на сайте';
+    toggleBtn.classList.add('red');
+  }
+});
+
 </script>
 </body>
 </html>
