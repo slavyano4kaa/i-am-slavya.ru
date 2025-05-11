@@ -14,6 +14,7 @@ body {
   padding: 20px;
   border: 2px solid #00bfff;
   gap: 20px;
+  box-shadow: 0 0 8px #00bfff; /* небольшое синее свечение */
 }
 
 .profile, .links {
@@ -22,6 +23,7 @@ body {
   border-radius: 12px;
   flex: 1;
   min-width: 280px;
+  box-shadow: 0 0 8px #00bfff; /* небольшое синее свечение */
 }
 
 .avatar-box {
@@ -200,6 +202,7 @@ footer {
   .container {
     flex-direction: column;
     align-items: stretch; /* растягивает дочерние блоки на всю ширину */
+    margin-top: -85px; /* сдвигаем контейнер немного вверх */
   }
 
   .profile,
@@ -209,7 +212,7 @@ footer {
     width: auto;    /* позволяем блоку занять доступное пространство */
   }
   
-   /* Каналы */
+  /* Каналы */
   .channels {
     display: flex;
     flex-direction: column; /* Выводим каналы в столбик */
@@ -230,19 +233,22 @@ footer {
   }
   
   .channel-btn {
-      width: 88%;
+    width: 88%;
   }
 }
+
 
 .sparkle-btn {
   position: relative;
   overflow: hidden;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .sparkle-btn:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 15px #00bfff, 0 0 30px #00bfff;
 }
+
 
 .sparkle-btn .sparkle {
   position: absolute;
@@ -252,14 +258,50 @@ footer {
   animation: sparkleUp 0.6s forwards ease-out; /* Сделаем анимацию быстрее */
 }
 
+.sparkle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
 @keyframes sparkleUp {
   0% {
     transform: translateY(0) scale(1);
     opacity: 1;
   }
   100% {
-    transform: translateY(-50px) scale(0.3);
+    transform: translateY(-20px) scale(0.5);
     opacity: 0;
   }
+}
+
+.sound-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: black;
+  color: #00ccff;
+  border: 2px solid #00ccff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00ccff;
+  box-sizing: border-box; /* Чтобы размер кнопки оставался фиксированным */
+}
+
+.sound-toggle.red {
+  border-color: red;
+  box-shadow: 0 0 10px red;
+  color: red;
+}
+
+.sound-toggle:hover {
+  background: #00ccff;
+  color: black;
+  border-color: #00ccff;
+  box-shadow: 0 0 10px #00ccff;
 }
 
