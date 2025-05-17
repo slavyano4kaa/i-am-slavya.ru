@@ -1,8 +1,19 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: black;
+  background: url('wallpaper.jpg') center/cover no-repeat fixed; /* cover ensures full screen without white gaps */
   color: white;
+}
+
+:root {
+  --accent: #113981;
+}
+
+/* === Frosted glass effect for container + sound toggle === */
+.container,
+.sound-toggle {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
 }
 
 .container {
@@ -12,47 +23,43 @@ body {
   max-width: 1000px;
   margin: 20px auto;
   padding: 20px;
-  border: 2px solid #00bfff;
+  border: 2px solid var(--accent);
   gap: 20px;
-  box-shadow: 0 0 8px #00bfff; /* небольшое синее свечение */
+  box-shadow: 0 0 8px var(--accent);
+  border-radius: 16px;
 }
 
 .profile, .links {
-  border: 2px solid #00bfff;
+  border: 2px solid var(--accent);
   padding: 20px;
   border-radius: 12px;
   flex: 1;
   min-width: 280px;
-  box-shadow: 0 0 8px #00bfff; /* небольшое синее свечение */
+  box-shadow: 0 0 8px var(--accent);
+  background: rgba(0, 0, 0, 0.25); /* subtle internal blur */
+  backdrop-filter: blur(6px);
 }
 
 .avatar-box {
   display: flex;
   align-items: center;
   gap: 15px;
-  border-bottom: 2px solid #00bfff;
+  border-bottom: 2px solid var(--accent);
   padding-bottom: 10px;
 }
 
 .avatar {
   width: 100px;
   height: 100px;
-  border: 3px solid #00bfff;
+  border: 3px solid var(--accent);
   border-radius: 50%;
   object-fit: cover;
-}
-
-.username-block {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: 15px;
 }
 
 .username {
   font-size: 26px;
   font-weight: bold;
-  color: #00bfff;
+  color: white;
   line-height: 1.2;
 }
 
@@ -72,7 +79,7 @@ body {
 
 .channel {
   flex: 1;
-  border: 2px solid #00bfff;
+  border: 2px solid var(--accent);
   padding: 10px;
   border-radius: 12px;
   display: flex;
@@ -84,18 +91,12 @@ body {
 
 .channel-title {
   font-weight: bold;
-  color: #00bfff;
-  text-align: left;
-  display: block;
+  color: white;
   margin-bottom: 8px;
-  word-break: break-word;
 }
 
-.channel-btn {
-  margin-top: 10px;
-  width: 150px;
-  align-self: start;
-  background-color: #00bfff;
+.channel-btn, .links .btn {
+  background-color: var(--accent);
   color: black;
   text-decoration: none;
   padding: 10px 15px;
@@ -104,10 +105,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
-.channel-btn:hover {
+.channel-btn:hover, .links .btn:hover {
   transform: scale(1.05);
 }
 
@@ -118,57 +119,24 @@ body {
 .links {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Одинаковое расстояние между всеми кнопками */
-  flex-wrap: wrap;
-}
-
-.links .btn {
-  background-color: #00bfff;
-  color: black;
-  text-decoration: none;
-  padding: 10px 1px;
-  border-radius: 12px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  margin: 0 auto;
-  border: none;
-  width: 100%;
-  max-width: 220px; /* Стандартная максимальная ширина для кнопок */
+  gap: 15px;
 }
 
 .links .btn.long {
-  max-width: 420px; /* Для длинных кнопок */
-}
-
-.links .btn.medium {
-  max-width: 300px; /* Для кнопок средней длины */
-}
-
-.links .btn:not(.long) {
-  width: fit-content; /* Кнопки, не являющиеся длинными, занимают ширину по содержимому */
-}
-
-
-.links .btn:hover {
-  transform: scale(1.05);
+  max-width: 420px;
 }
 
 .links .row {
   display: flex;
   gap: 10px;
-  margin: 10px 0;
   flex-wrap: wrap;
-  margin-top: -1px;
 }
 
 .links .row .btn {
-  flex: none;
-  width: 190px;
-  margin: 0 auto;
+  flex: 1 1 0;
+  min-width: 120px;
 }
+
 
 .icon {
   width: 20px;
@@ -188,7 +156,8 @@ body {
 }
 
 .info span {
-  color: #00bfff;
+  color: var(--accent);
+  font-weight: 700; /* make values bold while preserving accent color */
 }
 
 footer {
@@ -201,42 +170,56 @@ footer {
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
-    align-items: stretch; /* растягивает дочерние блоки на всю ширину */
-    margin-top: -85px; /* сдвигаем контейнер немного вверх */
+    margin-top: -85px;
   }
-
   .profile,
   .links {
-    order: unset;
-    margin: 0 -10px; /* равные отступы слева и справа */
-    width: auto;    /* позволяем блоку занять доступное пространство */
+    box-sizing: border-box;
+    width: calc(99% + 5px); /* оставляем 30px пространства справа */
+    margin-right: 30px;
   }
-  
-  /* Каналы */
   .channels {
-    display: flex;
-    flex-direction: column; /* Выводим каналы в столбик */
-    gap: 10px; /* расстояние между каналами */
-    width: 100%;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px; 
   }
 
-  .channel {
-    flex-grow: 1; /* Позволяет каналам растягиваться */
-    width: 100%; /* каналы будут растягиваться на всю ширину */
-    margin: 0 10px; /* добавляем отступы для симметричности */
-  }
-
-  .channel-title {
-    text-align: left; /* центрируем заголовок */
-  }
-  
-  .channel-btn {
-    width: 88%;
+  .links .row .btn {
+    flex: 1 1 100%;
+    max-width: 100%;
   }
 }
 
+.sound-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.sound-toggle.red {
+  border-color: red;
+  box-shadow: 0 0 10px red;
+  color: red;
+}
+
+.sound-toggle:not(.red) {
+  color: #fff;
+  border-color: #fff; /* white border */
+  box-shadow: 0 0 10px #fff; /* white glow */
+}
+
+.sound-toggle:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
 
 .sparkle-btn {
   position: relative;
@@ -246,7 +229,7 @@ footer {
 
 .sparkle-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px #00bfff, 0 0 30px #00bfff;
+  box-shadow: 0 0 15px var(--accent), 0 0 30px var(--accent);
 }
 
 
@@ -275,47 +258,3 @@ footer {
     opacity: 0;
   }
 }
-
-.sound-toggle {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background: black;
-  color: #00ccff;
-  border: 2px solid #00ccff;
-  padding: 10px 15px;
-  border-radius: 10px;
-  cursor: pointer;
-  z-index: 10;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px #00ccff;
-  box-sizing: border-box; /* Чтобы размер кнопки оставался фиксированным */
-}
-
-.sound-toggle.red {
-  border-color: red;
-  box-shadow: 0 0 10px red;
-  color: red;
-}
-
-.sound-toggle:hover {
-  background: #00ccff;
-  color: black;
-  border-color: #00ccff;
-  box-shadow: 0 0 10px #00ccff;
-}
-
-.subscriber-count {
-  font-size: 14px;
-  color: gray;
-  text-align: right;
-  margin-bottom: 5px;
-}
-
-.section-divider {
-  border: none;
-  height: 1px;
-  background-color: #00ccff; /* синяя линия */
-  margin: 5px 0 10px;
-}
-
