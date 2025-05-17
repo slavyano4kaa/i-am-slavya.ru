@@ -9,7 +9,6 @@ body {
   --accent: #113981;
 }
 
-/* === Frosted glass effect for container + sound toggle === */
 .container,
 .sound-toggle {
   background: rgba(0, 0, 0, 0.35);
@@ -36,7 +35,7 @@ body {
   flex: 1;
   min-width: 280px;
   box-shadow: 0 0 8px var(--accent);
-  background: rgba(0, 0, 0, 0.25); /* subtle internal blur */
+  background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(6px);
 }
 
@@ -157,7 +156,7 @@ body {
 
 .info span {
   color: var(--accent);
-  font-weight: 700; /* make values bold while preserving accent color */
+  font-weight: 700;
 }
 
 footer {
@@ -175,16 +174,21 @@ footer {
   .profile,
   .links {
     box-sizing: border-box;
-    width: calc(99% + 5px); /* оставляем 30px пространства справа */
+    width: calc(99% + 5px);
     margin-right: 30px;
   }
+  
   .channels {
-    margin-left: 10px; 
+    justify-content: center;
+    width: 100%;
+    margin-left: 0;
   }
 
+
   .links .row .btn {
-    flex: 1 1 100%;
-    max-width: 100%;
+    flex: 1 1 0;
+    min-width: 140px;
+    max-width: 420px;
   }
 }
 
@@ -211,8 +215,8 @@ footer {
 
 .sound-toggle:not(.red) {
   color: #fff;
-  border-color: #fff; /* white border */
-  box-shadow: 0 0 10px #fff; /* white glow */
+  border-color: #fff;
+  box-shadow: 0 0 10px #fff;
 }
 
 .sound-toggle:hover {
@@ -238,7 +242,7 @@ footer {
   border-radius: 50%;
   opacity: 0.9;
   pointer-events: none;
-  animation: sparkleUp 0.6s forwards ease-out; /* Сделаем анимацию быстрее */
+  animation: sparkleUp 0.6s forwards ease-out;
 }
 
 .sparkle {
