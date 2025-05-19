@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Страница не найдена</title>
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+  <link rel="stylesheet" href="404.css" />
+</head>
+<body>
+  <canvas id="rain-canvas"></canvas>
+  <audio id="rain-sound" loop>
+    <source src="rain.mp3" type="audio/mp3" />
+  </audio>
+  <button id="toggle-sound" class="sound-toggle red">🔇 Звук на сайте</button>
+
+  <div class="label-404 blur-bg">404 Not Found</div>
+
+  <div class="container container-404">
+    <div class="miku-box">
+      <img src="mikusprite.png" alt="Miku sprite" />
+    </div>
+
+    <div class="text-box blur-bg">
+      <div class="label-miku">Мику</div>
+      <h1>Ой! Не знаю, как мы здесь оказались…<br />Может вернёмся обратно?</h1>
+      <a href="https://i-am-slavya.ru/" class="btn sparkle-btn" id="home-btn">На главную</a>
+    </div>
+  </div>
+
+  <script src="404.js"></script>
+</body>
+</html>
