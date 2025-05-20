@@ -47,6 +47,12 @@ body {
   padding-bottom: 10px;
 }
 
+.films {
+  padding-top: 15px;
+  gap: 15px;
+  border-top: 2px solid var(--accent);
+}
+
 .avatar {
   width: 100px;
   height: 100px;
@@ -145,6 +151,7 @@ body {
 
 .info {
   margin-top: 20px;
+  margin-bottom: 15px; /* добавлено */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px 20px;
