@@ -14,6 +14,8 @@ body {
 }
 
 .container {
+  flex-direction: column; /* теперь элементы внутри идут сверху вниз */
+  align-items: center;
   display: flex;        /* ставим флекс-контейнер */
   justify-content: space-between; /* разделяем колонки по ширине */
   gap: 10px; /* или любое значение, которое вам нужно */     /* можно увеличить ширину контейнера */
@@ -23,6 +25,31 @@ body {
   padding: 30px;
   backdrop-filter: blur(14px);
   box-shadow: 0 0 15px var(--accent);
+}
+
+.top-button {
+  margin-bottom: 10px;
+}
+
+.container-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+.columns-wrapper {
+  /* flex не нужен, чтобы колонки шли одна под другой */
+  width: 100%;
+  max-width: 500px; /* ограничение ширины контейнера */
+  margin: 0 auto; /* центрируем */
+}
+
+.column {
+  width: 100%; /* чтобы занять всю ширину .columns-wrapper */
+  max-width: 500px; /* одинаковая максимальная ширина */
+  margin-bottom: 20px; /* отступ между колонками */
+  box-sizing: border-box;
 }
 
 .part {
@@ -79,6 +106,43 @@ footer {
   color: gray;
   font-size: 14px;
 }
+
+.sparkle-btn{
+  position:relative;
+  overflow:hidden;
+  transition:transform .2s ease,box-shadow .3s ease;
+}
+.sparkle-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 15px var(--accent),0 0 30px var(--accent);
+}
+.sparkle-btn .sparkle{
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  animation:sparkleUp .6s forwards ease-out;
+}
+@keyframes sparkleUp{
+  0%{transform:translateY(0)   scale(1);opacity:1;}
+  100%{transform:translateY(-20px) scale(.5);opacity:0;}
+}
+
+.btn{
+  background:var(--accent);
+  color:white;
+  text-decoration:none;
+  padding:10px 24px;
+  border-radius:12px;
+  font-weight:bold;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform .2s ease;
+  border:none;
+  width:fit-content;
+  box-shadow:0 0 8px var(--accent);
+}
+.btn:hover{transform:scale(1.05);}
 
 @media (max-width: 768px) {
   body {
