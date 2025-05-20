@@ -1,0 +1,97 @@
+:root {
+  --accent: #113981;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url('wallpaper.jpg') center/cover no-repeat fixed;
+  color: white;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  display: flex;        /* ставим флекс-контейнер */
+  justify-content: space-between; /* разделяем колонки по ширине */
+  gap: 10px; /* или любое значение, которое вам нужно */     /* можно увеличить ширину контейнера */
+  background: rgba(0, 0, 0, 0.35);
+  border: 2px solid var(--accent);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 15px var(--accent);
+}
+
+.part {
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  padding: 6px 20px;
+  font: bold 1rem/1 'Arial', sans-serif;
+  color: white;
+  box-shadow: 0 0 8px var(--accent);
+  margin: 20px 0 10px;
+  max-width: max-content;
+}
+
+.genre {
+  font-size: 0.85rem;
+  color: #bbbbbb;
+  margin-left: 6px;
+  display: inline; /* по умолчанию в строке */
+}
+
+
+.list {
+  background: rgba(0, 0, 0, 0.25);
+  gap: 10px; /* или любое значение, которое вам нужно */
+  line-height: 3;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  padding: 6px 20px;
+  font: 1rem/1 'Arial', sans-serif;
+  box-shadow: 0 0 8px var(--accent);
+  margin: 20px 0 10px;
+  max-width: max-content;
+}
+
+.list ul {
+  padding-left: 3px; /* отступ слева */
+  margin: 0;
+  list-style: inside disc;
+}
+
+.list ul li {
+  margin-bottom: 5px; /* расстояние между пунктами */
+  line-height: 1.3; /* высота строки внутри пункта */
+  color: #9193c2;
+}
+
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  color: gray;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 20px 10px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+  
+  .genre {
+    display: block;       /* перенос на новую строку */
+    margin-left: 0;       /* убираем отступ */
+    margin-top: 2px;      /* небольшой отступ сверху */
+  }
+}
