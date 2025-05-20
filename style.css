@@ -176,7 +176,7 @@ footer {
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
-    margin-top: -85px;
+    margin-top: 30px;
   }
   .profile,
   .links {
