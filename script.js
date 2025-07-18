@@ -15,3 +15,28 @@ function startDigitAnimation(containerSelector, interval = 50) {
 }
 
 startDigitAnimation('.age-field', 50);
+
+function updateVKTrack(containerSelector, vkUser = "slavya69", endpoint = "https://vk-track-status.slavyano4kaa.workers.dev") {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
+
+  function fetchTrack() {
+    fetch(`${endpoint}?user=${vkUser}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.artist && data.title) {
+          container.textContent = `Listening: ${data.artist} – ${data.title}`;
+        } else {
+          container.textContent = ` `;
+        }
+      })
+      .catch(() => {
+        container.textContent = `Error`;
+      });
+  }
+
+  fetchTrack();
+  setInterval(fetchTrack, 10000);
+}
+
+updateVKTrack('.vk-track');
