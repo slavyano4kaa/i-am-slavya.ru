@@ -79,6 +79,11 @@ body {
   color: #cccccc;
 }
 
+.avatar-info .vk-track {
+  font-size: 15px;
+  color: #2e7bde;
+}
+
 .accent-line {
   height: 2px;
   background-color: #acacac;
