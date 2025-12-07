@@ -8,7 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const heart = document.createElement('span');
     heart.classList.add('floating-heart');
     heart.textContent = '💗';
+
+    // случайное положение внутри popup
     heart.style.left = Math.random() * (popup.offsetWidth - 10) + 'px';
+
     popup.appendChild(heart);
 
     setTimeout(() => {
@@ -23,16 +26,20 @@ document.addEventListener('DOMContentLoaded', () => {
       popup.style.display = 'flex';
       const height = popup.offsetHeight;
 
-      // позиция popup относительно окна
+      // ставим popup над сердечком
       popup.style.top = (rect.top - height - offset) + 'px';
-      popup.style.left = rect.left + 'px';
 
-      // подставляем текст, если есть data-message
+      // центрируем popup по сердечку
+      popup.style.left =
+        (rect.left + rect.width / 2 - popup.offsetWidth / 2) + 'px';
+
+      // подставляем текст, если у сердечка есть data-message
       if (heart.dataset.message) {
-        popup.querySelector('p').innerHTML = heart.dataset.message.replace(/\n/g, '<br>');
+        popup.querySelector('p').innerHTML =
+          heart.dataset.message.replace(/\n/g, '<br>');
       }
 
-      // запуск непрерывного появления сердечек
+      // запускаем непрерывное появление сердечек
       if (floatingInterval) clearInterval(floatingInterval);
       floatingInterval = setInterval(createFloatingHeart, 200);
 
