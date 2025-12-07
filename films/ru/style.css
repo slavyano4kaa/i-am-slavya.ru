@@ -79,7 +79,7 @@ body {
   display: inline; /* по умолчанию в строке */
 }
 
-.genre {
+.aka {
   font-size: 0.85rem;
   color: #f1f1f1;
   margin-left: 6px;
@@ -188,4 +188,5 @@ footer {
     margin-top: 2px;      /* небольшой отступ сверху */
   }
 }
+
 
