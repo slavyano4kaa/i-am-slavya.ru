@@ -79,6 +79,14 @@ body {
   display: inline; /* по умолчанию в строке */
 }
 
+.genre {
+  font-size: 0.85rem;
+  color: #f1f1f1;
+  margin-left: 6px;
+  font-family: 'RazerF5Bold', sans-serif;
+  display: inline; /* по умолчанию в строке */
+}
+
 
 .list {
   background: transperent;
@@ -180,3 +188,4 @@ footer {
     margin-top: 2px;      /* небольшой отступ сверху */
   }
 }
+
