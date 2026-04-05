@@ -1,0 +1,44 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gym Split</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="segment-wrap">
+        <button class="tab is-active" data-day="arms">Руки</button>
+        <button class="tab" data-day="body">Тело</button>
+        <button class="tab" data-day="legs">Ноги</button>
+      </div>
+
+      <div class="difficulty-row">
+		  <div class="difficulty-label">Сложность:</div>
+
+		  <div class="dropdown" id="dropdown">
+			<div class="dropdown-btn" id="dropdownBtn">Лёгкое</div>
+
+			<div class="dropdown-menu" id="dropdownMenu">
+			  <div class="dropdown-item" data-value="0">Очень лёгкое</div>
+			  <div class="dropdown-item active" data-value="1">Лёгкое</div>
+			  <div class="dropdown-item" data-value="2">Ниже среднего</div>
+			  <div class="dropdown-item" data-value="3">Среднее</div>
+			  <div class="dropdown-item" data-value="4">Выше среднего</div>
+			  <div class="dropdown-item" data-value="5">Тяжёлое</div>
+			</div>
+		  </div>
+		</div>
+    </header>
+
+    <main>
+      <section id="cards" class="cards"></section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
