@@ -29,7 +29,7 @@ const program = {
       ]
     },
     {
-	  title: "Трицепс (EZ-штанга)",
+	  title: "Трицепс (V-штанга)",
 	  sets: 5,
 	  reps: [15, 12, 12, 10, 8],
 	  image: "images/arms_biceps.png",
