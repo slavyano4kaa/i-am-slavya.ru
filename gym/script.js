@@ -1,3 +1,4 @@
+console.log("script version 8");
 const program = {
   arms: {
     A: [
