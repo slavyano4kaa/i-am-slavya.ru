@@ -393,7 +393,7 @@ function render() {
   cardsEl.innerHTML = dayData
     .map((exercise, index) => {
       const weights = exercise.levels[currentDifficulty];
-      const repsLine = `${exercise.sets} подх.`;
+      const repsLine = `${exercise.sets} подходов`;
       const groupCount = countWeightGroups(weights);
 
       return `
