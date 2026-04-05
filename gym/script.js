@@ -1,4 +1,3 @@
-console.log("script version 7");
 const program = {
   arms: {
     A: [
@@ -6,7 +5,7 @@ const program = {
         title: "Бицепс",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/arms_biceps.png",
+        image: "images/arms_biceps.jpg",
         levels: [
           [14, 14, 18, 18, 23],
           [14, 18, 18, 23, 23],
@@ -20,7 +19,7 @@ const program = {
         title: "Молотки",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/arms_crossover.png",
+        image: "images/arms_crossover.jpg",
         levels: [
           [14, 14, 18, 18, 23],
           [14, 18, 18, 23, 23],
@@ -34,7 +33,7 @@ const program = {
         title: "Трицепс (V-образный)",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/arms_biceps.png",
+        image: "images/arms_biceps.jpg",
         levels: [
           [14, 18, 18, 23, 23],
           [18, 18, 23, 23, 30],
@@ -48,7 +47,7 @@ const program = {
         title: "Французский жим",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/arms_france.png",
+        image: "images/arms_france.jpg",
         levels: [
           [5, 5, 7.5, 7.5, 10],
           [7.5, 7.5, 10, 10, 12.5],
@@ -62,7 +61,7 @@ const program = {
         title: "Брусья",
         sets: 4,
         reps: [12, 10, 8, 8],
-        image: "images/arms_assisted_dips.png",
+        image: "images/arms_assisted_dips.jpg",
         assisted: true,
         levels: [
           [57, 50, 43, 36],
@@ -80,7 +79,7 @@ const program = {
         title: "Бицепс узким хватом",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/arms_uzkiy_biceps.png",
+        image: "images/arms_uzkiy_biceps.jpg",
         levels: [
           [0, 0, 2.5, 2.5, 5],
           [0, 2.5, 2.5, 5, 7.5],
@@ -96,7 +95,7 @@ const program = {
         title: "Трицепс канат",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/arms_biceps.png",
+        image: "images/arms_biceps.jpg",
         levels: [
           [14, 18, 18, 23, 23],
           [18, 18, 23, 23, 30],
@@ -110,7 +109,7 @@ const program = {
         title: "Бицепс канат",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/arms_biceps.png",
+        image: "images/arms_biceps.jpg",
         levels: [
           [14, 14, 18, 18, 23],
           [14, 18, 18, 23, 23],
@@ -124,7 +123,7 @@ const program = {
         title: "Французский жим",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/arms_france.png",
+        image: "images/arms_france.jpg",
         levels: [
           [5, 5, 7.5, 7.5, 10],
           [7.5, 7.5, 10, 10, 12.5],
@@ -138,7 +137,7 @@ const program = {
         title: "Брусья",
         sets: 4,
         reps: [12, 10, 8, 8],
-        image: "images/arms_assisted_dips.png",
+        image: "images/arms_assisted_dips.jpg",
         assisted: true,
         levels: [
           [57, 50, 43, 36],
@@ -158,7 +157,7 @@ const program = {
         title: "Жим груди",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/body_chest_press.png",
+        image: "images/body_chest_press.jpg",
         levels: [
           [0, 2.5, 2.5, 5, 5],
           [2.5, 2.5, 5, 5, 10],
@@ -174,7 +173,7 @@ const program = {
         title: "Бабочка",
         sets: 5,
         reps: [15, 12, 12, 10, 10],
-        image: "images/body_pec_deck2.png",
+        image: "images/body_pec_deck2.jpg",
         levels: [
           [9, 14, 14, 20, 20],
           [14, 14, 20, 20, 27],
@@ -188,7 +187,7 @@ const program = {
         title: "Верхний блок",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/body_lat_pulldown.png",
+        image: "images/body_lat_pulldown.jpg",
         levels: [
           [14, 20, 20, 27, 27],
           [20, 20, 27, 27, 34],
@@ -202,7 +201,7 @@ const program = {
         title: "Горизонтальная тяга",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/body_horizontal_thrust.png",
+        image: "images/body_horizontal_thrust.jpg",
         levels: [
           [14, 20, 20, 27, 27],
           [20, 20, 27, 27, 34],
@@ -216,7 +215,7 @@ const program = {
         title: "Подтягивания",
         sets: 4,
         reps: [10, 8, 8, 6],
-        image: "images/arms_assisted_dips.png",
+        image: "images/arms_assisted_dips.jpg",
         assisted: true,
         levels: [
           [64, 57, 50, 43],
@@ -234,7 +233,7 @@ const program = {
         title: "Жим груди",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/body_chest_press.png",
+        image: "images/body_chest_press.jpg",
         levels: [
           [0, 2.5, 2.5, 5, 5],
           [2.5, 2.5, 5, 5, 10],
@@ -250,7 +249,7 @@ const program = {
         title: "Сведение в бабочке",
         sets: 5,
         reps: [15, 12, 12, 10, 10],
-        image: "images/body_pec_deck.png",
+        image: "images/body_pec_deck.jpg",
         levels: [
           [9, 14, 14, 20, 20],
           [14, 14, 20, 20, 27],
@@ -264,7 +263,7 @@ const program = {
         title: "Тяга сверху широким хватом",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/body_lat_pulldown.png",
+        image: "images/body_lat_pulldown.jpg",
         levels: [
           [14, 20, 20, 27, 27],
           [20, 20, 27, 27, 34],
@@ -278,7 +277,7 @@ const program = {
         title: "Горизонтальная тяга узким хватом",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/body_lat_pulldown.png",
+        image: "images/body_lat_pulldown.jpg",
         levels: [
           [14, 20, 20, 27, 27],
           [20, 20, 27, 27, 34],
@@ -292,7 +291,7 @@ const program = {
         title: "Подтягивания",
         sets: 4,
         reps: [10, 8, 8, 6],
-        image: "images/arms_assisted_dips.png",
+        image: "images/arms_assisted_dips.jpg",
         assisted: true,
         levels: [
           [64, 57, 50, 43],
@@ -312,7 +311,7 @@ const program = {
         title: "Жим ногами",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/legs_leg_press.png",
+        image: "images/legs_leg_press.jpg",
         levels: [
           [0, 10, 10, 20, 20],
           [10, 10, 20, 20, 30],
@@ -342,7 +341,7 @@ const program = {
         title: "Сгибание ног",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/legs_leg_curl.png",
+        image: "images/legs_leg_curl.jpg",
         levels: [
           [14, 18, 18, 23, 23],
           [18, 18, 23, 23, 30],
@@ -356,7 +355,7 @@ const program = {
         title: "Разведение ног",
         sets: 5,
         reps: [18, 15, 15, 12, 12],
-        image: "images/legs_abductor.png",
+        image: "images/legs_abductor.jpg",
         levels: [
           [18, 20, 20, 25, 25],
           [20, 20, 25, 25, 30],
@@ -370,7 +369,7 @@ const program = {
         title: "Ягодичный",
         sets: 4,
         reps: [15, 12, 12, 10],
-        image: "images/legs_glute.png",
+        image: "images/legs_glute.jpg",
         levels: [
           [0, 0, 10, 10],
           [0, 10, 10, 20],
@@ -403,7 +402,7 @@ const program = {
         title: "Сгибание ног",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/legs_leg_curl.png",
+        image: "images/legs_leg_curl.jpg",
         levels: [
           [14, 18, 18, 23, 23],
           [18, 18, 23, 23, 30],
@@ -417,7 +416,7 @@ const program = {
         title: "Жим ногами узкой постановкой",
         sets: 5,
         reps: [15, 12, 12, 10, 8],
-        image: "images/legs_leg_press.png",
+        image: "images/legs_leg_press.jpg",
         levels: [
           [0, 10, 10, 20, 20],
           [10, 10, 20, 20, 30],
@@ -433,7 +432,7 @@ const program = {
         title: "Ягодичный",
         sets: 4,
         reps: [15, 12, 12, 10],
-        image: "images/legs_glute.png",
+        image: "images/legs_glute.jpg",
         levels: [
           [0, 0, 10, 10],
           [0, 10, 10, 20],
@@ -449,7 +448,7 @@ const program = {
         title: "Разведение ног",
         sets: 5,
         reps: [18, 15, 15, 12, 12],
-        image: "images/legs_abductor.png",
+        image: "images/legs_abductor.jpg",
         levels: [
           [18, 20, 20, 25, 25],
           [20, 20, 25, 25, 30],
