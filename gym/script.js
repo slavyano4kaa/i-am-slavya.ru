@@ -1,4 +1,5 @@
-console.log("script version 8");
+console.log("script version 10");
+
 const program = {
   arms: {
     A: [
@@ -464,7 +465,11 @@ const program = {
 };
 
 const cardsEl = document.getElementById("cards");
-const tabs = document.querySelectorAll(".tab[data-day]");
+
+const dayDropdown = document.getElementById("dayDropdown");
+const dayDropdownBtn = document.getElementById("dayDropdownBtn");
+const dayDropdownItems = document.querySelectorAll(".day-dropdown-item");
+
 const typeTabs = document.querySelectorAll(".tab[data-type]");
 
 const dropdown = document.getElementById("dropdown");
@@ -477,11 +482,20 @@ let currentDifficulty = 1;
 
 const AVAILABLE_PLATES = [25, 20, 15, 10, 5, 2.5, 1.25];
 
-tabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    currentDay = tab.dataset.day;
-    tabs.forEach((item) => item.classList.remove("is-active"));
-    tab.classList.add("is-active");
+dayDropdownBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  dayDropdown.classList.toggle("open");
+});
+
+dayDropdownItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    dayDropdownItems.forEach((i) => i.classList.remove("active"));
+    item.classList.add("active");
+
+    currentDay = item.dataset.day;
+    dayDropdownBtn.textContent = item.textContent;
+
+    dayDropdown.classList.remove("open");
     render();
   });
 });
@@ -495,7 +509,8 @@ typeTabs.forEach((tab) => {
   });
 });
 
-dropdownBtn.addEventListener("click", () => {
+dropdownBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
   dropdown.classList.toggle("open");
 });
 
@@ -516,28 +531,16 @@ document.addEventListener("click", (e) => {
   if (!dropdown.contains(e.target)) {
     dropdown.classList.remove("open");
   }
+
+  if (!dayDropdown.contains(e.target)) {
+    dayDropdown.classList.remove("open");
+  }
 });
 
 function getZoneColor(weight) {
   if (weight <= 23) return "green";
   if (weight <= 57) return "yellow";
   return "red";
-}
-
-function countWeightGroups(weights) {
-  let count = 0;
-  let start = 0;
-
-  while (start < weights.length) {
-    let end = start;
-    while (end + 1 < weights.length && weights[end + 1] === weights[start]) {
-      end++;
-    }
-    count++;
-    start = end + 1;
-  }
-
-  return count;
 }
 
 function formatWeight(weight) {
@@ -623,9 +626,8 @@ function renderWeightSummary(exercise, weights, reps) {
   }
 
   return groups
-    .map((group, index) => {
-      const colorBaseWeight = exercise.assisted ? group.weight : group.weight;
-      const colorClass = `color-${getZoneColor(colorBaseWeight)}`;
+    .map((group) => {
+      const colorClass = `color-${getZoneColor(group.weight)}`;
 
       const rangeText =
         group.from === group.to
@@ -646,16 +648,16 @@ function renderWeightSummary(exercise, weights, reps) {
         : "";
 
       return `
-	  <div class="weight-pill">
-		<span class="color-bar ${colorClass}"></span>
-		<span class="weight-copy">
-		  <small>${rangeText}</small>
-		  <strong>${valueText}</strong>
-		  <small>${repsText}</small>
-		  ${extraPlateMarkup}
-		</span>
-	  </div>
-	 `;
+        <div class="weight-pill">
+          <span class="color-bar ${colorClass}"></span>
+          <span class="weight-copy">
+            <small>${rangeText}</small>
+            <strong>${valueText}</strong>
+            <small>${repsText}</small>
+            ${extraPlateMarkup}
+          </span>
+        </div>
+      `;
     })
     .join("");
 }
@@ -712,12 +714,10 @@ function render() {
     .map((exercise, index) => {
       const weights = exercise.levels[currentDifficulty];
       const repsLine = `${exercise.sets} подходов`;
-      const groupCount = countWeightGroups(weights);
-      const shouldStack = true;
       const baseWeightText = getBaseWeightText(exercise);
 
       return `
-        <article class="card ${shouldStack ? "card-stack" : ""}" style="animation-delay:${index * 60}ms">
+        <article class="card" style="animation-delay:${index * 60}ms">
           ${makeImageMarkup(exercise.image, exercise.title)}
 
           <div class="card-body">
@@ -725,7 +725,7 @@ function render() {
             <div class="card-meta">${repsLine}</div>
             ${baseWeightText ? `<div class="card-meta">${baseWeightText}</div>` : ""}
 
-            <div class="weight-row ${shouldStack ? "weight-row-stack" : ""}">
+            <div class="weight-row weight-row-stack">
               ${renderWeightSummary(exercise, weights, exercise.reps)}
             </div>
           </div>

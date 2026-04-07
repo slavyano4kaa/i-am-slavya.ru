@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -10,32 +9,39 @@
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <div class="segment-wrap">
-        <button class="tab is-active" data-day="arms">Руки</button>
-        <button class="tab" data-day="body">Тело</button>
-        <button class="tab" data-day="legs">Ноги</button>
+      <div class="day-row">
+        <div class="day-dropdown" id="dayDropdown">
+          <div class="day-dropdown-btn" id="dayDropdownBtn">Руки</div>
+
+          <div class="day-dropdown-menu" id="dayDropdownMenu">
+            <div class="day-dropdown-item active" data-day="arms">Руки</div>
+            <div class="day-dropdown-item" data-day="body">Тело</div>
+            <div class="day-dropdown-item" data-day="legs">Ноги</div>
+          </div>
+        </div>
       </div>
-	  <div class="segment-wrap segment-small" id="typeSwitch">
-	    <button class="tab tab-small is-active" data-type="A">Тип A</button>
-	    <button class="tab tab-small" data-type="B">Тип B</button>
-	  </div>
+
+      <div class="segment-wrap segment-small" id="typeSwitch">
+        <button class="tab tab-small is-active" data-type="A">Тип A</button>
+        <button class="tab tab-small" data-type="B">Тип B</button>
+      </div>
 
       <div class="difficulty-row">
-		  <div class="difficulty-label">Сложность:</div>
+        <div class="difficulty-label">Сложность:</div>
 
-		  <div class="dropdown" id="dropdown">
-			<div class="dropdown-btn" id="dropdownBtn">Лёгкое</div>
+        <div class="dropdown" id="dropdown">
+          <div class="dropdown-btn" id="dropdownBtn">Лёгкое</div>
 
-			<div class="dropdown-menu" id="dropdownMenu">
-			  <div class="dropdown-item" data-value="0">Очень лёгкое</div>
-			  <div class="dropdown-item active" data-value="1">Лёгкое</div>
-			  <div class="dropdown-item" data-value="2">Ниже среднего</div>
-			  <div class="dropdown-item" data-value="3">Среднее</div>
-			  <div class="dropdown-item" data-value="4">Выше среднего</div>
-			  <div class="dropdown-item" data-value="5">Тяжёлое</div>
-			</div>
-		  </div>
-		</div>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <div class="dropdown-item" data-value="0">Очень лёгкое</div>
+            <div class="dropdown-item active" data-value="1">Лёгкое</div>
+            <div class="dropdown-item" data-value="2">Ниже среднего</div>
+            <div class="dropdown-item" data-value="3">Среднее</div>
+            <div class="dropdown-item" data-value="4">Выше среднего</div>
+            <div class="dropdown-item" data-value="5">Тяжёлое</div>
+          </div>
+        </div>
+      </div>
     </header>
 
     <main>
