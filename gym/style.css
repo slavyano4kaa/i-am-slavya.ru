@@ -124,7 +124,7 @@ body {
 
 .day-dropdown {
   position: relative;
-  width: min(180px, 52vw);
+  width: min(180px, 35vw);
   user-select: none;
   z-index: 40;
 }
