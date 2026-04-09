@@ -1,792 +1,229 @@
-console.log("script version 12");
+console.log("script version 17 - FULL");
 
 const program = {
   arms: {
     A: [
-      {
-        title: "Бицепс",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/arms_biceps.jpg",
-        levels: [
-          [14, 14, 18, 18, 23],
-          [14, 18, 18, 23, 23],
-          [18, 23, 23, 30, 30],
-          [23, 23, 30, 30, 36],
-          [23, 30, 30, 36, 43],
-          [30, 36, 36, 43, 50]
-        ]
-      },
-      {
-        title: "Молотки",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/arms_crossover.jpg",
-        levels: [
-          [14, 14, 18, 18, 23],
-          [14, 18, 18, 23, 23],
-          [18, 18, 23, 23, 30],
-          [18, 23, 23, 30, 30],
-          [23, 23, 30, 30, 36],
-          [23, 30, 30, 36, 36]
-        ]
-      },
-      {
-        title: "Трицепс (V-образный)",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/arms_biceps.jpg",
-        levels: [
-          [14, 18, 18, 23, 23],
-          [18, 18, 23, 23, 30],
-          [18, 23, 23, 30, 30],
-          [23, 23, 30, 30, 36],
-          [23, 30, 30, 36, 43],
-          [30, 30, 36, 43, 50]
-        ]
-      },
-      {
-        title: "Французский жим",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/arms_france.jpg",
-        levels: [
-          [5, 5, 7.5, 7.5, 10],
-          [7.5, 7.5, 10, 10, 12.5],
-          [10, 10, 12.5, 12.5, 15],
-          [10, 12.5, 12.5, 15, 15],
-          [12.5, 12.5, 15, 15, 17.5],
-          [12.5, 15, 15, 17.5, 20]
-        ]
-      },
-      {
-        title: "Брусья",
-        sets: 4,
-        reps: [12, 10, 8, 8],
-        image: "images/arms_assisted_dips.jpg",
-        assisted: true,
-        levels: [
-          [57, 50, 43, 36],
-          [50, 43, 36, 30],
-          [43, 36, 30, 23],
-          [36, 30, 23, 23],
-          [30, 23, 23, 23],
-          [23, 23, 23, 23]
-        ]
-      }
+      { title: "Бицепс", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/arms_biceps.jpg", levels: [[14, 14, 18, 18, 23], [14, 18, 18, 23, 23], [18, 23, 23, 30, 30], [23, 23, 30, 30, 36], [23, 30, 30, 36, 43], [30, 36, 36, 43, 50]] },
+      { title: "Молотки", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/arms_crossover.jpg", levels: [[14, 14, 18, 18, 23], [14, 18, 18, 23, 23], [18, 18, 23, 23, 30], [18, 23, 23, 30, 30], [23, 23, 30, 30, 36], [23, 30, 30, 36, 36]] },
+      { title: "Трицепс (V-образный)", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/arms_biceps.jpg", levels: [[14, 18, 18, 23, 23], [18, 18, 23, 23, 30], [18, 23, 23, 30, 30], [23, 23, 30, 30, 36], [23, 30, 30, 36, 43], [30, 30, 36, 43, 50]] },
+      { title: "Французский жим", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/arms_france.jpg", levels: [[5, 5, 7.5, 7.5, 10], [7.5, 7.5, 10, 10, 12.5], [10, 10, 12.5, 12.5, 15], [10, 12.5, 12.5, 15, 15], [12.5, 12.5, 15, 15, 17.5], [12.5, 15, 15, 17.5, 20]] },
+      { title: "Брусья", sets: 4, reps: [12, 10, 8, 8], image: "images/arms_assisted_dips.jpg", assisted: true, levels: [[57, 50, 43, 36], [50, 43, 36, 30], [43, 36, 30, 23], [36, 30, 23, 23], [30, 23, 23, 23], [23, 23, 23, 23]] }
     ],
-
     B: [
-      {
-        title: "Бицепс узким хватом",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/arms_uzkiy_biceps.jpg",
-        levels: [
-          [0, 0, 2.5, 2.5, 5],
-          [0, 2.5, 2.5, 5, 7.5],
-          [2.5, 2.5, 5, 7.5, 10],
-          [2.5, 5, 7.5, 10, 12.5],
-          [5, 7.5, 10, 12.5, 15],
-          [7.5, 10, 12.5, 15, 20]
-        ],
-        machineLevels: [
-          [5, 7.5, 7.5, 10, 12.5],
-          [7.5, 10, 12.5, 15, 17.5],
-          [12.5, 15, 17.5, 20, 22.5],
-          [20, 25, 30, 35, 40],
-          [25, 30, 35, 40, 42.5],
-          [30, 35, 40, 45, 50]
-        ],
-        plateLoaded: true,
-        baseWeight: 10,
-        isMachine: false // По умолчанию штанга
-      },
-      {
-        title: "Трицепс канат",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/arms_biceps.jpg",
-        levels: [
-          [14, 18, 18, 23, 23],
-          [18, 18, 23, 23, 30],
-          [18, 23, 23, 30, 30],
-          [23, 23, 30, 30, 36],
-          [23, 30, 30, 36, 43],
-          [30, 30, 36, 43, 50]
-        ]
-      },
-      {
-        title: "Бицепс канат",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/arms_biceps.jpg",
-        levels: [
-          [14, 14, 18, 18, 23],
-          [14, 18, 18, 23, 23],
-          [18, 23, 23, 30, 30],
-          [23, 23, 30, 30, 36],
-          [23, 30, 30, 36, 43],
-          [30, 36, 36, 43, 50]
-        ]
-      },
-      {
-        title: "Французский жим",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/arms_france.jpg",
-        levels: [
-          [5, 5, 7.5, 7.5, 10],
-          [7.5, 7.5, 10, 10, 12.5],
-          [10, 10, 12.5, 12.5, 15],
-          [10, 12.5, 12.5, 15, 15],
-          [12.5, 12.5, 15, 15, 17.5],
-          [12.5, 15, 15, 17.5, 20]
-        ]
-      },
-      {
-        title: "Брусья",
-        sets: 4,
-        reps: [12, 10, 8, 8],
-        image: "images/arms_assisted_dips.jpg",
-        assisted: true,
-        levels: [
-          [57, 50, 43, 36],
-          [50, 43, 36, 30],
-          [43, 36, 30, 23],
-          [36, 30, 23, 23],
-          [30, 23, 23, 23],
-          [23, 23, 23, 23]
-        ]
-      }
+      { title: "Бицепс узким хватом", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/arms_uzkiy_biceps.jpg", levels: [[0, 0, 2.5, 2.5, 5], [0, 2.5, 2.5, 5, 7.5], [2.5, 2.5, 5, 7.5, 10], [2.5, 5, 7.5, 10, 12.5], [5, 7.5, 10, 12.5, 15], [7.5, 10, 12.5, 15, 20]], machineLevels: [[5, 7.5, 10, 12.5, 15], [7.5, 10, 12.5, 15, 20], [12.5, 15, 17.5, 20, 22.5], [20, 25, 30, 35, 40], [25, 30, 35, 40, 42.5], [30, 35, 40, 45, 50]], plateLoaded: true, baseWeight: 10, isMachine: false },
+      { title: "Трицепс канат", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/arms_biceps.jpg", levels: [[14, 18, 18, 23, 23], [18, 18, 23, 23, 30], [18, 23, 23, 30, 30], [23, 23, 30, 30, 36], [23, 30, 30, 36, 43], [30, 30, 36, 43, 50]] },
+      { title: "Бицепс канат", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/arms_biceps.jpg", levels: [[14, 14, 18, 18, 23], [14, 18, 18, 23, 23], [18, 23, 23, 30, 30], [23, 23, 30, 30, 36], [23, 30, 30, 36, 43], [30, 36, 36, 43, 50]] },
+      { title: "Французский жим", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/arms_france.jpg", levels: [[5, 5, 7.5, 7.5, 10], [7.5, 7.5, 10, 10, 12.5], [10, 10, 12.5, 12.5, 15], [10, 12.5, 12.5, 15, 15], [12.5, 12.5, 15, 15, 17.5], [12.5, 15, 15, 17.5, 20]] },
+      { title: "Брусья", sets: 4, reps: [12, 10, 8, 8], image: "images/arms_assisted_dips.jpg", assisted: true, levels: [[57, 50, 43, 36], [50, 43, 36, 30], [43, 36, 30, 23], [36, 30, 23, 23], [30, 23, 23, 23], [23, 23, 23, 23]] }
     ]
   },
-
   body: {
     A: [
-      {
-        title: "Жим груди",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/body_chest_press.jpg",
-        levels: [
-          [0, 2.5, 2.5, 5, 5],
-          [2.5, 2.5, 5, 5, 10],
-          [2.5, 5, 5, 10, 15],
-          [5, 5, 10, 15, 20],
-          [5, 10, 15, 20, 25],
-          [10, 15, 20, 25, 30]
-        ],
-        plateLoaded: true,
-        baseWeight: 15
-      },
-      {
-        title: "Бабочка",
-        sets: 5,
-        reps: [15, 12, 12, 10, 10],
-        image: "images/body_pec_deck2.jpg",
-        levels: [
-          [9, 14, 14, 20, 20],
-          [14, 14, 20, 20, 27],
-          [14, 20, 20, 27, 34],
-          [20, 27, 27, 34, 43],
-          [27, 34, 43, 52, 61],
-          [34, 43, 52, 61, 70]
-        ]
-      },
-      {
-        title: "Верхний блок",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/body_lat_pulldown.jpg",
-        levels: [
-          [14, 20, 20, 27, 27],
-          [20, 20, 27, 27, 34],
-          [20, 27, 27, 34, 43],
-          [27, 34, 34, 43, 52],
-          [34, 43, 52, 61, 70],
-          [43, 52, 61, 70, 79]
-        ]
-      },
-      {
-        title: "Горизонтальная тяга",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/body_horizontal_thrust.jpg",
-        levels: [
-          [14, 20, 20, 27, 27],
-          [20, 20, 27, 27, 34],
-          [20, 27, 27, 34, 43],
-          [27, 34, 34, 43, 52],
-          [34, 43, 52, 61, 70],
-          [43, 52, 61, 70, 79]
-        ]
-      },
-      {
-        title: "Подтягивания",
-        sets: 4,
-        reps: [10, 8, 8, 6],
-        image: "images/arms_assisted_dips.jpg",
-        assisted: true,
-        levels: [
-          [64, 57, 50, 43],
-          [57, 50, 43, 36],
-          [50, 43, 36, 30],
-          [43, 36, 30, 23],
-          [36, 30, 23, 23],
-          [30, 23, 23, 23]
-        ]
-      }
+      { title: "Жим груди", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/body_chest_press.jpg", levels: [[0, 2.5, 2.5, 5, 5], [2.5, 2.5, 5, 5, 10], [2.5, 5, 5, 10, 15], [5, 5, 10, 15, 20], [5, 10, 15, 20, 25], [10, 15, 20, 25, 30]], plateLoaded: true, baseWeight: 15 },
+      { title: "Бабочка", sets: 5, reps: [15, 12, 12, 10, 10], image: "images/body_pec_deck2.jpg", levels: [[9, 14, 14, 20, 20], [14, 14, 20, 20, 27], [14, 20, 20, 27, 34], [20, 27, 27, 34, 43], [27, 34, 43, 52, 61], [34, 43, 52, 61, 70]] },
+      { title: "Верхний блок", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/body_lat_pulldown.jpg", levels: [[14, 20, 20, 27, 27], [20, 20, 27, 27, 34], [20, 27, 27, 34, 43], [27, 34, 34, 43, 52], [34, 43, 52, 61, 70], [43, 52, 61, 70, 79]] },
+      { title: "Горизонтальная тяга", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/body_horizontal_thrust.jpg", levels: [[14, 20, 20, 27, 27], [20, 20, 27, 27, 34], [20, 27, 27, 34, 43], [27, 34, 34, 43, 52], [34, 43, 52, 61, 70], [43, 52, 61, 70, 79]] },
+      { title: "Подтягивания", sets: 4, reps: [10, 8, 8, 6], image: "images/arms_assisted_dips.jpg", assisted: true, levels: [[64, 57, 50, 43], [57, 50, 43, 36], [50, 43, 36, 30], [43, 36, 30, 23], [36, 30, 23, 23], [30, 23, 23, 23]] }
     ],
-
     B: [
-      {
-        title: "Жим груди",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/body_chest_press.jpg",
-        levels: [
-          [0, 2.5, 2.5, 5, 5],
-          [2.5, 2.5, 5, 5, 10],
-          [2.5, 5, 5, 10, 15],
-          [5, 5, 10, 15, 20],
-          [5, 10, 15, 20, 25],
-          [10, 15, 20, 25, 30]
-        ],
-        plateLoaded: true,
-        baseWeight: 15
-      },
-      {
-        title: "Сведение в бабочке",
-        sets: 5,
-        reps: [15, 12, 12, 10, 10],
-        image: "images/body_pec_deck.jpg",
-        levels: [
-          [9, 14, 14, 20, 20],
-          [14, 14, 20, 20, 27],
-          [14, 20, 20, 27, 34],
-          [20, 27, 27, 34, 43],
-          [27, 34, 43, 52, 61],
-          [34, 43, 52, 61, 70]
-        ]
-      },
-      {
-        title: "Тяга сверху широким хватом",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/body_lat_pulldown.jpg",
-        levels: [
-          [14, 20, 20, 27, 27],
-          [20, 20, 27, 27, 34],
-          [20, 27, 27, 34, 43],
-          [27, 34, 34, 43, 52],
-          [34, 43, 52, 61, 70],
-          [43, 52, 61, 70, 79]
-        ]
-      },
-      {
-        title: "Горизонтальная тяга узким хватом",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/body_lat_pulldown.jpg",
-        levels: [
-          [14, 20, 20, 27, 27],
-          [20, 20, 27, 27, 34],
-          [20, 27, 27, 34, 43],
-          [27, 34, 34, 43, 52],
-          [34, 43, 52, 61, 70],
-          [43, 52, 61, 70, 79]
-        ]
-      },
-      {
-        title: "Подтягивания",
-        sets: 4,
-        reps: [10, 8, 8, 6],
-        image: "images/arms_assisted_dips.jpg",
-        assisted: true,
-        levels: [
-          [64, 57, 50, 43],
-          [57, 50, 43, 36],
-          [50, 43, 36, 30],
-          [43, 36, 30, 23],
-          [36, 30, 23, 23],
-          [30, 23, 23, 23]
-        ]
-      }
+      { title: "Жим груди", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/body_chest_press.jpg", levels: [[0, 2.5, 2.5, 5, 5], [2.5, 2.5, 5, 5, 10], [2.5, 5, 5, 10, 15], [5, 5, 10, 15, 20], [5, 10, 15, 20, 25], [10, 15, 20, 25, 30]], plateLoaded: true, baseWeight: 15 },
+      { title: "Сведение в бабочке", sets: 5, reps: [15, 12, 12, 10, 10], image: "images/body_pec_deck.jpg", levels: [[9, 14, 14, 20, 20], [14, 14, 20, 20, 27], [14, 20, 20, 27, 34], [20, 27, 27, 34, 43], [27, 34, 43, 52, 61], [34, 43, 52, 61, 70]] },
+      { title: "Тяга сверху широким", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/body_lat_pulldown.jpg", levels: [[14, 20, 20, 27, 27], [20, 20, 27, 27, 34], [20, 27, 27, 34, 43], [27, 34, 34, 43, 52], [34, 43, 52, 61, 70], [43, 52, 61, 70, 79]] },
+      { title: "Тяга узким хватом", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/body_lat_pulldown.jpg", levels: [[14, 20, 20, 27, 27], [20, 20, 27, 27, 34], [20, 27, 27, 34, 43], [27, 34, 34, 43, 52], [34, 43, 52, 61, 70], [43, 52, 61, 70, 79]] },
+      { title: "Подтягивания", sets: 4, reps: [10, 8, 8, 6], image: "images/arms_assisted_dips.jpg", assisted: true, levels: [[64, 57, 50, 43], [57, 50, 43, 36], [50, 43, 36, 30], [43, 36, 30, 23], [36, 30, 23, 23], [30, 23, 23, 23]] }
     ]
   },
-
   legs: {
     A: [
-      {
-        title: "Жим ногами",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/legs_leg_press.jpg",
-        levels: [
-          [0, 10, 10, 20, 20],
-          [10, 10, 20, 20, 30],
-          [10, 20, 20, 30, 40],
-          [20, 20, 30, 40, 50],
-          [20, 30, 40, 50, 70],
-          [30, 40, 50, 70, 100]
-        ],
-        plateLoaded: true,
-        baseWeight: 20
-      },
-      {
-        title: "Разгибание ног",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/legs_leg_extension.jpg",
-        levels: [
-          [20, 20, 27, 27, 34],
-          [20, 27, 27, 34, 34],
-          [27, 27, 34, 34, 43],
-          [27, 34, 34, 43, 43],
-          [34, 34, 43, 43, 52],
-          [34, 43, 43, 52, 61]
-        ]
-      },
-      {
-        title: "Сгибание ног",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/legs_leg_curl.jpg",
-        levels: [
-          [14, 18, 18, 23, 23],
-          [18, 18, 23, 23, 30],
-          [18, 23, 23, 30, 30],
-          [23, 23, 30, 30, 36],
-          [23, 30, 30, 36, 43],
-          [30, 30, 36, 43, 50]
-        ]
-      },
-      {
-        title: "Разведение ног",
-        sets: 5,
-        reps: [18, 15, 15, 12, 12],
-        image: "images/legs_abductor.jpg",
-        levels: [
-          [18, 20, 20, 25, 25],
-          [20, 20, 25, 25, 30],
-          [20, 25, 25, 30, 34],
-          [25, 25, 30, 34, 41],
-          [25, 30, 34, 41, 48],
-          [30, 34, 41, 48, 55]
-        ]
-      },
-      {
-        title: "Ягодичный",
-        sets: 4,
-        reps: [15, 12, 12, 10],
-        image: "images/legs_glute.jpg",
-        levels: [
-          [0, 0, 10, 10],
-          [0, 10, 10, 20],
-          [10, 10, 20, 30],
-          [10, 20, 30, 40],
-          [20, 30, 40, 50],
-          [30, 40, 50, 70]
-        ],
-        plateLoaded: true,
-        baseWeight: 20
-      }
+      { title: "Жим ногами", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/legs_leg_press.jpg", plateLoaded: true, baseWeight: 20, levels: [[0, 10, 10, 20, 20], [10, 10, 20, 20, 30], [10, 20, 20, 30, 40], [20, 20, 30, 40, 50], [20, 30, 40, 50, 70], [30, 40, 50, 70, 100]] },
+      { title: "Разгибание ног", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/legs_leg_extension.jpg", levels: [[20, 20, 27, 27, 34], [20, 27, 27, 34, 34], [27, 27, 34, 34, 43], [27, 34, 34, 43, 43], [34, 34, 43, 43, 52], [34, 43, 43, 52, 61]] },
+      { title: "Сгибание ног", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/legs_leg_curl.jpg", levels: [[14, 18, 18, 23, 23], [18, 18, 23, 23, 30], [18, 23, 23, 30, 30], [23, 23, 30, 30, 36], [23, 30, 30, 36, 43], [30, 30, 36, 43, 50]] },
+      { title: "Разведение ног", sets: 5, reps: [18, 15, 15, 12, 12], image: "images/legs_abductor.jpg", levels: [[18, 20, 20, 25, 25], [20, 20, 25, 25, 30], [20, 25, 25, 30, 34], [25, 25, 30, 34, 41], [25, 30, 34, 41, 48], [30, 34, 41, 48, 55]] },
+      { title: "Ягодичный", sets: 4, reps: [15, 12, 12, 10], image: "images/legs_glute.jpg", plateLoaded: true, baseWeight: 20, levels: [[0, 0, 10, 10], [0, 10, 10, 20], [10, 10, 20, 30], [10, 20, 30, 40], [20, 30, 40, 50], [30, 40, 50, 70]] }
     ],
-
     B: [
-      {
-        title: "Разгибание ног с паузой",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/legs_leg_extension.jpg",
-        levels: [
-          [20, 20, 27, 27, 34],
-          [20, 27, 27, 34, 34],
-          [27, 27, 34, 34, 43],
-          [27, 34, 34, 43, 43],
-          [34, 34, 43, 43, 52],
-          [34, 43, 43, 52, 61]
-        ]
-      },
-      {
-        title: "Сгибание ног",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/legs_leg_curl.jpg",
-        levels: [
-          [14, 18, 18, 23, 23],
-          [18, 18, 23, 23, 30],
-          [18, 23, 23, 30, 30],
-          [23, 23, 30, 30, 36],
-          [23, 30, 30, 36, 43],
-          [30, 30, 36, 43, 50]
-        ]
-      },
-      {
-        title: "Жим ногами узкой постановкой",
-        sets: 5,
-        reps: [15, 12, 12, 10, 8],
-        image: "images/legs_leg_press.jpg",
-        levels: [
-          [0, 10, 10, 20, 20],
-          [10, 10, 20, 20, 30],
-          [10, 20, 20, 30, 40],
-          [20, 20, 30, 40, 50],
-          [20, 30, 40, 50, 70],
-          [30, 40, 50, 70, 100]
-        ],
-        plateLoaded: true,
-        baseWeight: 20
-      },
-      {
-        title: "Ягодичный",
-        sets: 4,
-        reps: [15, 12, 12, 10],
-        image: "images/legs_glute.jpg",
-        levels: [
-          [0, 0, 10, 10],
-          [0, 10, 10, 20],
-          [10, 10, 20, 30],
-          [10, 20, 30, 40],
-          [20, 30, 40, 50],
-          [30, 40, 50, 70]
-        ],
-        plateLoaded: true,
-        baseWeight: 20
-      },
-      {
-        title: "Разведение ног",
-        sets: 5,
-        reps: [18, 15, 15, 12, 12],
-        image: "images/legs_abductor.jpg",
-        levels: [
-          [18, 20, 20, 25, 25],
-          [20, 20, 25, 25, 30],
-          [20, 25, 25, 30, 34],
-          [25, 25, 30, 34, 41],
-          [25, 30, 34, 41, 48],
-          [30, 34, 41, 48, 55]
-        ]
-      }
+      { title: "Разгибание с паузой", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/legs_leg_extension.jpg", levels: [[20, 20, 27, 27, 34], [20, 27, 27, 34, 34], [27, 27, 34, 34, 43], [27, 34, 34, 43, 43], [34, 34, 43, 43, 52], [34, 43, 43, 52, 61]] },
+      { title: "Сгибание ног", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/legs_leg_curl.jpg", levels: [[14, 18, 18, 23, 23], [18, 18, 23, 23, 30], [18, 23, 23, 30, 30], [23, 23, 30, 30, 36], [23, 30, 30, 36, 43], [30, 30, 36, 43, 50]] },
+      { title: "Жим ногами узко", sets: 5, reps: [15, 12, 12, 10, 8], image: "images/legs_leg_press.jpg", plateLoaded: true, baseWeight: 20, levels: [[0, 10, 10, 20, 20], [10, 10, 20, 20, 30], [10, 20, 20, 30, 40], [20, 20, 30, 40, 50], [20, 30, 40, 50, 70], [30, 40, 50, 70, 100]] },
+      { title: "Ягодичный", sets: 4, reps: [15, 12, 12, 10], image: "images/legs_glute.jpg", plateLoaded: true, baseWeight: 20, levels: [[0, 0, 10, 10], [0, 10, 10, 20], [10, 10, 20, 30], [10, 20, 30, 40], [20, 30, 40, 50], [30, 40, 50, 70]] },
+      { title: "Разведение ног", sets: 5, reps: [18, 15, 15, 12, 12], image: "images/legs_abductor.jpg", levels: [[18, 20, 20, 25, 25], [20, 20, 25, 25, 30], [20, 25, 25, 30, 34], [25, 25, 30, 34, 41], [25, 30, 34, 41, 48], [30, 34, 41, 48, 55]] }
     ]
   }
 };
 
+// --- DOM Элементы ---
 const cardsEl = document.getElementById("cards");
-
 const dayDropdown = document.getElementById("dayDropdown");
 const dayDropdownBtn = document.getElementById("dayDropdownBtn");
 const dayDropdownItems = document.querySelectorAll(".day-dropdown-item");
-
 const typeTabs = document.querySelectorAll(".tab[data-type]");
-
-const dropdown = document.getElementById("dropdown");
-const dropdownBtn = document.getElementById("dropdownBtn");
-const dropdownItems = document.querySelectorAll(".dropdown-item");
+const diffDropdown = document.getElementById("dropdown");
+const diffDropdownBtn = document.getElementById("dropdownBtn");
+const diffDropdownItems = document.querySelectorAll(".dropdown-item");
 
 let currentDay = "arms";
 let currentType = "A";
 let currentDifficulty = 1;
 
-const AVAILABLE_PLATES = [25, 20, 15, 10, 5, 2.5, 1.25];
-
-dayDropdownBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  dayDropdown.classList.toggle("open");
-});
-
-dayDropdownItems.forEach((item) => {
+// --- Обработчики интерфейса ---
+dayDropdownBtn.addEventListener("click", (e) => { e.stopPropagation(); dayDropdown.classList.toggle("open"); });
+dayDropdownItems.forEach(item => {
   item.addEventListener("click", () => {
-    dayDropdownItems.forEach((i) => i.classList.remove("active"));
+    dayDropdownItems.forEach(i => i.classList.remove("active"));
     item.classList.add("active");
-
     currentDay = item.dataset.day;
     dayDropdownBtn.textContent = item.textContent;
-
     dayDropdown.classList.remove("open");
     render();
   });
 });
 
-typeTabs.forEach((tab) => {
+typeTabs.forEach(tab => {
   tab.addEventListener("click", () => {
     currentType = tab.dataset.type;
-    typeTabs.forEach((item) => item.classList.remove("is-active"));
+    typeTabs.forEach(t => t.classList.remove("is-active"));
     tab.classList.add("is-active");
     render();
   });
 });
 
-dropdownBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  dropdown.classList.toggle("open");
-});
-
-dropdownItems.forEach((item) => {
+diffDropdownBtn.addEventListener("click", (e) => { e.stopPropagation(); diffDropdown.classList.toggle("open"); });
+diffDropdownItems.forEach(item => {
   item.addEventListener("click", () => {
-    dropdownItems.forEach((i) => i.classList.remove("active"));
+    diffDropdownItems.forEach(i => i.classList.remove("active"));
     item.classList.add("active");
-
-    dropdownBtn.textContent = item.textContent;
     currentDifficulty = Number(item.dataset.value);
-
-    dropdown.classList.remove("open");
+    diffDropdownBtn.textContent = item.textContent;
+    diffDropdown.classList.remove("open");
     render();
   });
 });
 
-document.addEventListener("click", (e) => {
-  if (!dropdown.contains(e.target)) {
-    dropdown.classList.remove("open");
-  }
-
-  if (!dayDropdown.contains(e.target)) {
-    dayDropdown.classList.remove("open");
-  }
+document.addEventListener("click", () => {
+  dayDropdown.classList.remove("open");
+  diffDropdown.classList.remove("open");
 });
 
-function getZoneColor(weight) {
-  if (weight <= 23) return "green";
-  if (weight <= 57) return "yellow";
-  return "red";
+// --- Вспомогательные функции ---
+function getZoneColor(w) { return w <= 23 ? "green" : w <= 57 ? "yellow" : "red"; }
+function formatWeight(w) { return Number.isInteger(w) ? String(w) : String(w).replace(".", ","); }
+
+function getBaseWeightText(ex) {
+  if (!ex.baseWeight || ex.isMachine) return "";
+  const t = ex.title.toLowerCase();
+  if (t.includes("жим ногами")) return `Вес платформы: ${ex.baseWeight} KGS`;
+  if (t.includes("жим груди") || t.includes("ягодич")) return `Базовый вес: ${ex.baseWeight} KGS`;
+  return `Вес штанги: ${ex.baseWeight} KGS`;
 }
 
-function formatWeight(weight) {
-  return Number.isInteger(weight) ? String(weight) : String(weight).replace(".", ",");
+// Умные блины (логика накопления)
+function getSmartPlates(target, isMachine) {
+  if (target <= 0) return "без блинов";
+  const weight = isMachine ? target : target / 2;
+  let remaining = weight;
+  let result = [];
+
+  // Если вес большой (30+), можно использовать тяжелые блины, но 10 - приоритет
+  while (remaining >= 10 - 0.0001) { result.push(10); remaining -= 10; }
+  const small = [5, 2.5, 1.25];
+  for (let p of small) { while (remaining >= p - 0.0001) { result.push(p); remaining -= p; } }
+  
+  const str = result.sort((a,b)=>b-a).map(formatWeight).join(" + ");
+  return isMachine ? `Блины: ${str} KGS` : `${str} × ${str} KGS`;
 }
 
-function getBaseWeightText(exercise) {
-  if (!exercise.baseWeight) return "";
-  
-  // Если это тренажер, не показываем вес штанги/платформы
-  if (exercise.isMachine) return "";
-
-  const lowerTitle = exercise.title.toLowerCase();
-
-  if (lowerTitle.includes("жим ногами")) {
-    return `Вес платформы: ${formatWeight(exercise.baseWeight)} KGS`;
-  }
-
-  if (lowerTitle.includes("жим груди")) {
-    return `Базовый вес: ${formatWeight(exercise.baseWeight)} KGS`;
-  }
-
-  if (lowerTitle.includes("ягодич")) {
-    return `Базовый вес: ${formatWeight(exercise.baseWeight)} KGS`;
-  }
-
-  return `Вес штанги: ${formatWeight(exercise.baseWeight)} KGS`;
-}
-
-function buildPlateBreakdown(totalWeight, isMachine = false) {
-  if (totalWeight === 0) {
-    return "без блинов";
-  }
-
-  // Для тренажера (machine) вешаем все блины на одну сторону штыря
-  // Для штанги (free weights) делим пополам на две стороны
-  const targetWeight = isMachine ? totalWeight : totalWeight / 2;
-  
-  if (targetWeight <= 0) return "без блинов";
-
-  let remaining = targetWeight;
-  const sidePlates = [];
-
-  for (const plate of AVAILABLE_PLATES) {
-    while (remaining >= plate - 0.0001) {
-      sidePlates.push(plate);
-      remaining = Number((remaining - plate).toFixed(2));
-    }
-  }
-
-  const sideText = sidePlates.map(formatWeight).join(" + ");
-  
-  if (isMachine) {
-    return `Блины: ${sideText} KGS`;
-  }
-  
-  return `${sideText} × ${sideText} KGS`;
-}
-
-function shouldShowPlateBreakdown(exercise) {
-  if (!exercise.plateLoaded) return false;
-  
-  // Если это тренажер, всегда показываем разбивку (для удобства)
-  if (exercise.isMachine) return true;
-  
-  if (!exercise.baseWeight) return false;
-
-  const lowerTitle = exercise.title.toLowerCase();
-  if (lowerTitle.includes("жим груди")) return true;
-  if (lowerTitle.includes("жим ногами")) return true;
-  if (lowerTitle.includes("узким хватом")) return true;
-  if (lowerTitle.includes("ez-штанга")) return true;
-
-  return false;
-}
-
-function renderWeightSummary(exercise, weights, reps) {
+function renderWeightSummary(ex, weights, reps) {
   const groups = [];
-  let start = 0;
-
-  while (start < weights.length) {
-    let end = start;
-    while (end + 1 < weights.length && weights[end + 1] === weights[start]) {
-      end++;
+  for (let i = 0; i < weights.length; i++) {
+    if (i > 0 && weights[i] === weights[i-1]) {
+      groups[groups.length-1].to++;
+      groups[groups.length-1].reps.push(reps[i]);
+    } else {
+      groups.push({ from: i+1, to: i+1, weight: weights[i], reps: [reps[i]] });
     }
-
-    groups.push({
-      from: start + 1,
-      to: end + 1,
-      weight: weights[start],
-      reps: reps.slice(start, end + 1)
-    });
-
-    start = end + 1;
   }
 
-  return groups
-    .map((group) => {
-      const colorClass = `color-${getZoneColor(group.weight)}`;
-
-      const rangeText =
-        group.from === group.to
-          ? `${group.from} подх.`
-          : `${group.from}-${group.to} подх.`;
-
-      const valueText = exercise.assisted
-        ? `помощь ${formatWeight(group.weight)} KGS`
-        : `${formatWeight(group.weight)} KGS`;
-
-      const repsText =
-        group.reps.length === 1
-          ? `${group.reps[0]} повт.`
-          : `${group.reps.join(", ")} повт.`;
-
-      const extraPlateMarkup = shouldShowPlateBreakdown(exercise)
-        ? `<small>${buildPlateBreakdown(group.weight, exercise.isMachine)}</small>`
-        : "";
-
-      return `
-        <div class="weight-pill">
-          <span class="color-bar ${colorClass}"></span>
-          <span class="weight-copy">
-            <small>${rangeText}</small>
-            <strong>${valueText}</strong>
-            <small>${repsText}</small>
-            ${extraPlateMarkup}
-          </span>
-        </div>
-      `;
-    })
-    .join("");
+  return groups.map(g => {
+    const range = g.from === g.to ? `${g.from} подх.` : `${g.from}-${g.to} подх.`;
+    const val = ex.assisted ? `помощь ${formatWeight(g.weight)}` : `${formatWeight(g.weight)} KGS`;
+    const plates = (ex.plateLoaded || ex.baseWeight) ? `<small>${getSmartPlates(g.weight, ex.isMachine)}</small>` : "";
+    return `
+      <div class="weight-pill">
+        <span class="color-bar color-${getZoneColor(g.weight)}"></span>
+        <span class="weight-copy">
+          <small>${range}</small><strong>${val}</strong><small>${g.reps.join(", ")} повт.</small>${plates}
+        </span>
+      </div>`;
+  }).join("");
 }
 
 function makeImageMarkup(src, title) {
   return `
     <div class="card-image">
-      <img
-        src="${src}"
-        alt="${title}"
-        class="exercise-image"
-        data-fullsrc="${src}"
-        data-title="${title}"
-        onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=&quot;empty-image&quot;>Добавь фото<br>${title}</div>';"
-      />
-    </div>
-  `;
+      <img src="${src}" alt="${title}" class="exercise-image" data-fullsrc="${src}" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=&quot;empty-image&quot;>Добавь фото</div>';"/>
+    </div>`;
 }
 
+// --- Лайтбокс ---
 function ensureLightbox() {
   if (document.getElementById("imageLightbox")) return;
-
-  const lightbox = document.createElement("div");
-  lightbox.id = "imageLightbox";
-  lightbox.innerHTML = `
-    <div class="lightbox-backdrop"></div>
-    <img class="lightbox-image" id="lightboxImage" alt="" />
-  `;
-  document.body.appendChild(lightbox);
-
-  lightbox.addEventListener("click", () => {
-    lightbox.classList.remove("is-open");
-  });
+  const lb = document.createElement("div");
+  lb.id = "imageLightbox";
+  lb.innerHTML = `<div class="lightbox-backdrop"></div><img class="lightbox-image" id="lightboxImage" />`;
+  document.body.appendChild(lb);
+  lb.addEventListener("click", () => lb.classList.remove("is-open"));
 }
 
-function bindImageClicks() {
-  const lightbox = document.getElementById("imageLightbox");
-  const lightboxImage = document.getElementById("lightboxImage");
-  const images = document.querySelectorAll(".exercise-image");
-
-  images.forEach((img) => {
+function bindActions() {
+  // Картинки
+  document.querySelectorAll(".exercise-image").forEach(img => {
     img.addEventListener("click", () => {
-      lightboxImage.src = img.dataset.fullsrc;
-      lightboxImage.alt = img.dataset.title || "";
-      lightbox.classList.add("is-open");
+      const lb = document.getElementById("imageLightbox");
+      document.getElementById("lightboxImage").src = img.dataset.fullsrc;
+      lb.classList.add("is-open");
     });
   });
-}
-
-function bindLocalToggles() {
-  const toggles = document.querySelectorAll(".card-toggle-btn");
-  toggles.forEach(btn => {
+  // Переключатели режимов
+  document.querySelectorAll(".card-toggle-btn").forEach(btn => {
     btn.addEventListener("click", () => {
-      const cardIndex = btn.closest(".card").dataset.index;
-      const mode = btn.dataset.mode;
-      const exercise = program[currentDay][currentType][cardIndex];
-      
-      exercise.isMachine = (mode === "machine");
+      const idx = btn.closest(".card").dataset.index;
+      program[currentDay][currentType][idx].isMachine = (btn.dataset.mode === "machine");
       render();
     });
   });
 }
 
+// --- Основной рендер ---
 function render() {
   const dayData = program[currentDay][currentType];
+  if (!dayData) { cardsEl.innerHTML = "Ошибка данных"; return; }
 
-  cardsEl.innerHTML = dayData
-    .map((exercise, index) => {
-      // Выбираем массив весов в зависимости от режима (штанга/тренажер)
-      const weights = (exercise.isMachine && exercise.machineLevels) 
-        ? exercise.machineLevels[currentDifficulty] 
-        : exercise.levels[currentDifficulty];
-        
-      const repsLine = `${exercise.sets} подходов`;
-      const baseWeightText = getBaseWeightText(exercise);
-      
-      // Генерируем переключатель, если это Бицепс узким хватом
-      let toggleMarkup = "";
-      if (exercise.title.toLowerCase().includes("бицепс узким хватом")) {
-        toggleMarkup = `
-          <div class="card-toggle">
-            <button class="card-toggle-btn ${!exercise.isMachine ? 'active' : ''}" data-mode="barbell">Штанга</button>
-            <button class="card-toggle-btn ${exercise.isMachine ? 'active' : ''}" data-mode="machine">Тренажер</button>
-          </div>
-        `;
-      }
+  cardsEl.innerHTML = dayData.map((ex, idx) => {
+    const weights = (ex.isMachine && ex.machineLevels) ? ex.machineLevels[currentDifficulty] : ex.levels[currentDifficulty];
+    
+    let toggle = "";
+    if (ex.title.toLowerCase().includes("бицепс узким хватом")) {
+      toggle = `
+        <div class="card-toggle">
+          <button class="card-toggle-btn ${!ex.isMachine ? 'active' : ''}" data-mode="barbell">Штанга</button>
+          <button class="card-toggle-btn ${ex.isMachine ? 'active' : ''}" data-mode="machine">Тренажер</button>
+        </div>`;
+    }
 
-      return `
-        <article class="card" data-index="${index}" style="animation-delay:${index * 60}ms">
-          ${makeImageMarkup(exercise.image, exercise.title)}
+    return `
+      <article class="card" data-index="${idx}" style="animation-delay:${idx*50}ms">
+        ${makeImageMarkup(ex.image, ex.title)}
+        <div class="card-body">
+          <h2 class="card-title">${ex.title}</h2>
+          <div class="card-meta">${ex.sets} подходов</div>
+          ${getBaseWeightText(ex) ? `<div class="card-meta">${getBaseWeightText(ex)}</div>` : ""}
+          ${toggle}
+          <div class="weight-row weight-row-stack">${renderWeightSummary(ex, weights, ex.reps)}</div>
+        </div>
+      </article>`;
+  }).join("");
 
-          <div class="card-body">
-            <h2 class="card-title">${exercise.title}</h2>
-            <div class="card-meta">${repsLine}</div>
-            ${baseWeightText ? `<div class="card-meta">${baseWeightText}</div>` : ""}
-            ${toggleMarkup}
-
-            <div class="weight-row weight-row-stack">
-              ${renderWeightSummary(exercise, weights, exercise.reps)}
-            </div>
-          </div>
-        </article>
-      `;
-    })
-    .join("");
-
-  bindImageClicks();
-  bindLocalToggles();
+  bindActions();
 }
 
 ensureLightbox();

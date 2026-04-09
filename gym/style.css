@@ -368,7 +368,6 @@ body {
   letter-spacing: -0.02em;
 }
 
-/* Новые стили для переключателя внутри карточки */
 .card-toggle {
   display: flex;
   background: rgba(255, 255, 255, 0.05);
@@ -464,7 +463,7 @@ body {
 }
 
 .weight-copy small {
-  font-size: 9px;
+  font-size: 10px; /* Слегка увеличил для читаемости блинов */
   font-weight: 600;
   color: rgba(255, 255, 255, 0.62);
   letter-spacing: -0.03em;
@@ -599,6 +598,6 @@ body {
   }
 
   .weight-copy small {
-    font-size: 10px;
+    font-size: 11px;
   }
 }
