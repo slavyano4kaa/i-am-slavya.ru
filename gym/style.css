@@ -368,6 +368,34 @@ body {
   letter-spacing: -0.02em;
 }
 
+/* Новые стили для переключателя внутри карточки */
+.card-toggle {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 2px;
+  margin-top: 8px;
+  width: fit-content;
+}
+
+.card-toggle-btn {
+  background: transparent;
+  border: 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card-toggle-btn.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
 .weight-row {
   display: flex;
   flex-wrap: nowrap;

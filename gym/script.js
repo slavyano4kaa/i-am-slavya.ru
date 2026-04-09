@@ -1,4 +1,4 @@
-console.log("script version 10");
+console.log("script version 12");
 
 const program = {
   arms: {
@@ -90,8 +90,17 @@ const program = {
           [5, 7.5, 10, 12.5, 15],
           [7.5, 10, 12.5, 15, 20]
         ],
+        machineLevels: [
+          [5, 7.5, 7.5, 10, 12.5],
+          [7.5, 10, 12.5, 15, 17.5],
+          [12.5, 15, 17.5, 20, 22.5],
+          [20, 25, 30, 35, 40],
+          [25, 30, 35, 40, 42.5],
+          [30, 35, 40, 45, 50]
+        ],
         plateLoaded: true,
-        baseWeight: 10
+        baseWeight: 10,
+        isMachine: false // По умолчанию штанга
       },
       {
         title: "Трицепс канат",
@@ -549,6 +558,9 @@ function formatWeight(weight) {
 
 function getBaseWeightText(exercise) {
   if (!exercise.baseWeight) return "";
+  
+  // Если это тренажер, не показываем вес штанги/платформы
+  if (exercise.isMachine) return "";
 
   const lowerTitle = exercise.title.toLowerCase();
 
@@ -567,13 +579,18 @@ function getBaseWeightText(exercise) {
   return `Вес штанги: ${formatWeight(exercise.baseWeight)} KGS`;
 }
 
-function buildPlateBreakdown(totalWeight) {
-  if (!totalWeight || totalWeight <= 0) {
+function buildPlateBreakdown(totalWeight, isMachine = false) {
+  if (totalWeight === 0) {
     return "без блинов";
   }
 
-  const perSide = totalWeight / 2;
-  let remaining = perSide;
+  // Для тренажера (machine) вешаем все блины на одну сторону штыря
+  // Для штанги (free weights) делим пополам на две стороны
+  const targetWeight = isMachine ? totalWeight : totalWeight / 2;
+  
+  if (targetWeight <= 0) return "без блинов";
+
+  let remaining = targetWeight;
   const sidePlates = [];
 
   for (const plate of AVAILABLE_PLATES) {
@@ -583,20 +600,24 @@ function buildPlateBreakdown(totalWeight) {
     }
   }
 
-  if (remaining > 0.001) {
-    return `добавь ${formatWeight(totalWeight)} KGS`;
-  }
-
   const sideText = sidePlates.map(formatWeight).join(" + ");
+  
+  if (isMachine) {
+    return `Блины: ${sideText} KGS`;
+  }
+  
   return `${sideText} × ${sideText} KGS`;
 }
 
 function shouldShowPlateBreakdown(exercise) {
   if (!exercise.plateLoaded) return false;
+  
+  // Если это тренажер, всегда показываем разбивку (для удобства)
+  if (exercise.isMachine) return true;
+  
   if (!exercise.baseWeight) return false;
 
   const lowerTitle = exercise.title.toLowerCase();
-
   if (lowerTitle.includes("жим груди")) return true;
   if (lowerTitle.includes("жим ногами")) return true;
   if (lowerTitle.includes("узким хватом")) return true;
@@ -644,7 +665,7 @@ function renderWeightSummary(exercise, weights, reps) {
           : `${group.reps.join(", ")} повт.`;
 
       const extraPlateMarkup = shouldShowPlateBreakdown(exercise)
-        ? `<small>${buildPlateBreakdown(group.weight)}</small>`
+        ? `<small>${buildPlateBreakdown(group.weight, exercise.isMachine)}</small>`
         : "";
 
       return `
@@ -707,23 +728,53 @@ function bindImageClicks() {
   });
 }
 
+function bindLocalToggles() {
+  const toggles = document.querySelectorAll(".card-toggle-btn");
+  toggles.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const cardIndex = btn.closest(".card").dataset.index;
+      const mode = btn.dataset.mode;
+      const exercise = program[currentDay][currentType][cardIndex];
+      
+      exercise.isMachine = (mode === "machine");
+      render();
+    });
+  });
+}
+
 function render() {
   const dayData = program[currentDay][currentType];
 
   cardsEl.innerHTML = dayData
     .map((exercise, index) => {
-      const weights = exercise.levels[currentDifficulty];
+      // Выбираем массив весов в зависимости от режима (штанга/тренажер)
+      const weights = (exercise.isMachine && exercise.machineLevels) 
+        ? exercise.machineLevels[currentDifficulty] 
+        : exercise.levels[currentDifficulty];
+        
       const repsLine = `${exercise.sets} подходов`;
       const baseWeightText = getBaseWeightText(exercise);
+      
+      // Генерируем переключатель, если это Бицепс узким хватом
+      let toggleMarkup = "";
+      if (exercise.title.toLowerCase().includes("бицепс узким хватом")) {
+        toggleMarkup = `
+          <div class="card-toggle">
+            <button class="card-toggle-btn ${!exercise.isMachine ? 'active' : ''}" data-mode="barbell">Штанга</button>
+            <button class="card-toggle-btn ${exercise.isMachine ? 'active' : ''}" data-mode="machine">Тренажер</button>
+          </div>
+        `;
+      }
 
       return `
-        <article class="card" style="animation-delay:${index * 60}ms">
+        <article class="card" data-index="${index}" style="animation-delay:${index * 60}ms">
           ${makeImageMarkup(exercise.image, exercise.title)}
 
           <div class="card-body">
             <h2 class="card-title">${exercise.title}</h2>
             <div class="card-meta">${repsLine}</div>
             ${baseWeightText ? `<div class="card-meta">${baseWeightText}</div>` : ""}
+            ${toggleMarkup}
 
             <div class="weight-row weight-row-stack">
               ${renderWeightSummary(exercise, weights, exercise.reps)}
@@ -735,6 +786,7 @@ function render() {
     .join("");
 
   bindImageClicks();
+  bindLocalToggles();
 }
 
 ensureLightbox();
